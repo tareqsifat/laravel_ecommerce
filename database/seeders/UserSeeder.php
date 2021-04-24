@@ -25,11 +25,10 @@ class UserSeeder extends Seeder
         $user-> first_name = 'Mr super';
         $user-> last_name = 'user';
         $user-> username = 'super_user';
-        // $user-> photo = 
+         $user-> photo = 'avatar.jpg';
         $user-> phone = '987654321';
         $user-> email = 'superuser@gwebsite.com';
-        $user-> password = Hash::make();
-        $user-> creator = Auth::user()-> id;
+        $user-> password = Hash::make('12345678');
         $user-> slug = 'super_user';
         $user-> created_at = Carbon::now() -> toDateString();
         $user-> save();
