@@ -6,7 +6,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
-class userSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,10 +15,12 @@ class userSeeder extends Seeder
      */
     public function run()
     {
-        user::truncate(); 
+        User::truncate(); 
 
-        $user = new user();
-        $ 
+        $user = new User();
+        $user -> role_id() = 1;
+
+        
         
     }
 }
