@@ -15,10 +15,12 @@ class CreateUserRolesTable extends Migration
     {
         Schema::create('user_roles', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table-> string('name', 100)-> nullable();
             $table->integer('serial')-> nullable();
-            cad
+            $table->string('creator',100)->nullable();
+            $table->string('slug',100)->nullable();
+            $table->integer('status')->default(1);
+            $table->timestamps();
         });
     }
 

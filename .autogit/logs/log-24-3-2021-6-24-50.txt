@@ -1,0 +1,21 @@
+-------------------- Auto-Git Log --------------------
+		Sat Apr 24 2021 06:24:50 GMT+0600 (Bangladesh Standard Time)
+------------------------------------------------------
+
+Modified files:
+* resources/views/welcome.blade.php
+
+
+Created files:
+* .autogit/autogit.json
+* app/Http/Controllers/UserRoleController.php
+* app/Models/UserRole.php
+* database/factories/UserRoleFactory.php
+* database/migrations/2021_04_24_001247_create_user_roles_table.php
+* database/seeders/UserRoleSeeder.php
+
+
+Deleted files:
+
+
+Renamed files:
