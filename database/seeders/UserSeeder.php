@@ -18,7 +18,7 @@ class userSeeder extends Seeder
         user::truncate(); 
 
         $user = new user();
-        $
+        $ 
         
     }
 }
