@@ -52,6 +52,26 @@ function(){
     
 });
  
+// User management
+Route::group( [
+    'prefix'=>'user',
+    'middleware'=>['auth'],
+    'namespace' => 'Admin' 
+
+],
+
+function(){ 
+
+    Route::get('/index','UserController@index')->name('admin_user_index');
+    Route::get('/view/{id}','UserController@view')->name('admin_user_view');
+    Route::get('/create','UserController@create')->name('admin_user_create');
+    Route::post('/store','UserController@store')->name('admin_user_store');
+    Route::get('/edit','UserController@edit')->name('admin_user_edit');
+    Route::post('/update','UserController@update')->name('admin_user_update');
+    Route::post('/delete','UserController@delete')->name('admin_user_delete');
+    
+});
+ 
 
 
 Route::group( ['prefix'=>'admin',
