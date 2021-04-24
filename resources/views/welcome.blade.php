@@ -15,15 +15,57 @@
         </style>
 
         <style>
+            *,
+            ::before,
+            ::after{
+                margin: 0;
+                padding: 0;
+                outline: 0;
+                box-sizing: border-box;
+            }
             body {
                 font-family: 'Nunito', sans-serif;
+                
             }
+            .button{
+                
+                padding: 20px 20px;
+                border: 1px solid black;
+                width: 120px;
+                margin-left: 30px;
+                font-size: 20px;
+                background-color: rgb(233, 233, 233);
+            }
+            .button button{
+                /* margin: 30px;
+                border: 1px solid black; */
+            }
+            .button button span{
+                font-size: 20pt;
+            }
+
         </style>
     </head>
     <body>
     <div class="card">
         <h1>welcome to Laravel</h1>
         <h2>this is home page </h2>
+
+        <a href="/admin">
+            <div class="button">
+                <button type="button" class="btn btn-light waves-effect waves-light m-1"> 
+                    <i class="fa fa-home"></i> 
+                       <span>Admin</span> 
+                </button>
+            </div>
+        <a href="/register">
+            <div class="button">
+                <button type="button" class="btn btn-light waves-effect waves-light m-1"> 
+                    <i class="fa fa-home"></i> 
+                       <span>register</span> 
+                </button>
+            </div>
+        </a>
     </div>
     </body>
 </html>
