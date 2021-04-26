@@ -28,7 +28,7 @@
                                             <tr>
                                                 <th scope="row">{{$key+1}}</th>
                                                 <td>{{ $item->name }}</td>
-                                                <td>{{ $item->serial }}</td>
+                                                <td>{{ $item->serial }}</td> 
                                                 <td>{{ $item->created_at->format('d M Y h:i:s a') }}</td>
                                                 <td>
                                                     <div>
