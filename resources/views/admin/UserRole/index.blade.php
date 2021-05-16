@@ -32,7 +32,8 @@
                                                 <td>{{ $item->created_at->format('d M Y h:i:s a') }}</td>
                                                 <td>
                                                     <div>
-                                                        <a type="button" href="{{ route('admin_user_role_edit',$item->id) }}" class="btn btn-warning waves-effect waves-light m-1">
+                                                        <a type="button" data-toggle="modal" data-target="#updateModal"
+                                                         href="" class="btn btn-warning waves-effect waves-light m-1">
                                                             <i class="fa fa-pencil"></i> <span>edit</span>
                                                         </a>
                                                     </div>
@@ -58,9 +59,9 @@
 
 
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal">
+    {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal">
         Launch demo modal
-    </button>
+    </button> --}}
 
     <!-- Modal -->
     <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalTitle" aria-hidden="true">
@@ -73,7 +74,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    hi
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
