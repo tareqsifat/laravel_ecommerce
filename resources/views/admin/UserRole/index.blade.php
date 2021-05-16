@@ -32,7 +32,10 @@
                                                 <td>{{ $item->created_at->format('d M Y h:i:s a') }}</td>
                                                 <td>
                                                     <div>
-                                                        <a type="button" data-toggle="modal" data-target="#updateModal"
+                                                        <a type="button"
+                                                         data-toggle="modal" data-target="#updateModal"
+                                                         data-id = {{ item-> id }}
+                                                         data-id = {{ item-> id }}
                                                          href="" class="btn btn-warning waves-effect waves-light m-1">
                                                             <i class="fa fa-pencil"></i> <span>edit</span>
                                                         </a>
