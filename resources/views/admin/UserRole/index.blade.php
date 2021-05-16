@@ -87,13 +87,16 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+                </div> 
             </div> 
     </div>
 
-    <script>
-        console.log('this is script');
-    </script>
+    @push('cjs')
+        <script>
+            console.log('this is script');
+        </script>
+    @endpush
+
 
 @endsection
 
