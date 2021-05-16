@@ -41,7 +41,7 @@
                                                          data-serial = "{{ $item-> serial }}"
 
                                                          href="" 
-                                                         class="btn btn-warning waves-effect waves-light m-1">
+                                                         class=" btn btn-warning waves-effect waves-light m-1">
                                                             <i class="fa fa-pencil"></i> <span>edit</span>
                                                         </a> 
                                                     </div>
@@ -88,9 +88,12 @@
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary">Save changes</button>
                 </div>
-            </div>
-        </div>
+            </div> 
     </div>
+
+    <script>
+        console.log('this is script');
+    </script>
 
 @endsection
 

@@ -1,0 +1,16 @@
+-------------------- Auto-Git Log --------------------
+		Sun May 16 2021 18:51:50 GMT+0600 (Bangladesh Standard Time)
+------------------------------------------------------
+
+Modified files:
+* resources/views/admin/UserRole/index.blade.php
+
+
+Created files:
+* .autogit/logs/log-16-4-2021-18-21-0.txt
+
+
+Deleted files:
+
+
+Renamed files:
