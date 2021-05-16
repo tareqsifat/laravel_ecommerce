@@ -266,8 +266,12 @@
              </div>
              <!--end color switcher-->
          </div>
-         <!--End wrapper-->
+         <!--End wrapper-->  
      </body>
+     {{-- Modal part --}}
+
+
+
  
      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
         @csrf
