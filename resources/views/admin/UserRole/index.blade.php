@@ -35,14 +35,15 @@
                                                         <a type="button"
                                                          data-toggle="modal" data-target="#updateModal"
 
-                                                         data-url = "{{ route('') }}"
-                                                         data-id = "{{ item-> id }}"
+                                                         data-url = "{{ route('admin_user_role_update') }}"
+                                                         data-id = "{{ $item-> id }}"
                                                          data-name = "{{ $item-> name }}"
                                                          data-serial = "{{ $item-> serial }}"
+
                                                          href="" 
                                                          class="btn btn-warning waves-effect waves-light m-1">
                                                             <i class="fa fa-pencil"></i> <span>edit</span>
-                                                        </a>
+                                                        </a> 
                                                     </div>
                                                 </td>
                                             </tr>
