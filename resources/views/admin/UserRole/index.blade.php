@@ -82,7 +82,18 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    hi
+                    <form action="" class="updade_role_form" method="POST">
+                        @csrf
+                            <input type="hidden" name="id" value="">
+                        <div class="form-group">
+                            <label for="">name</label>
+                            <input type="text" class="form-control" name="name" value ="">
+                        </div>
+                        <div class="form-group">
+                            <label for="">serial</label>
+                            <input type="number" class="form-control" name="serial" value="">
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
