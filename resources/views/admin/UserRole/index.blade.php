@@ -111,6 +111,12 @@
                 let url = $(this).data('url'); 
 
                 console.log(name, url, serial, id);
+                 
+                $('upadate_role_form').attr('url',url);
+                $('update_role_form input[name = name]').val(name);
+                $('update_role_form input[name = serial]').val(serial);
+                $('update_role_form input[name = id]').val(id);
+
             })
         </script>
     @endpush
