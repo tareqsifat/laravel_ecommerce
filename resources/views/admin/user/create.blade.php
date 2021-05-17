@@ -44,6 +44,16 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
+                                        <label for="input-21" class="col-sm-2 col-form-label">User role</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="username" class="form-control" id="input-21" placeholder="User Name" />
+                                            @error('username')
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
                                         <label for="input-21" class="col-sm-2 col-form-label">email</label>
                                         <div class="col-sm-10">
                                             <input type="email" name="email" class="form-control" id="input-21" placeholder="Enter Your Email" />

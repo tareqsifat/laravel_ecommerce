@@ -25,11 +25,14 @@
         <link href=" {{ asset('contents/admin') }}/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
         <!-- Custom Style-->
         <link href=" {{ asset('contents/admin') }}/css/app-style.css" rel="stylesheet" />
+        {{-- SweetAlart cdn --}}
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
         {{-- jquary --}}
         <script src="{{ asset('js/app.js') }}"></script>
     </head>
 
     <body class="bg-theme bg-theme1">
+        @include('include.flash')
         <!-- Start wrapper-->
         <div id="wrapper">
             <!--Start sidebar-wrapper-->
