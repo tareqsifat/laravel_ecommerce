@@ -41,7 +41,7 @@
                                                          data-serial = "{{ $item-> serial }}"
 
                                                          href="" 
-                                                         class=" btn btn-warning waves-effect waves-light m-1">
+                                                         class="role_update_btn btn btn-warning waves-effect waves-light m-1">
                                                             <i class="fa fa-pencil"></i> <span>edit</span>
                                                         </a> 
                                                     </div>
@@ -93,7 +93,9 @@
 
     @push('cjs')
         <script>
-            console.log('this is script');
+            $('role_update_btn').on('clicl', function(){
+                
+            })
         </script>
     @endpush
 
