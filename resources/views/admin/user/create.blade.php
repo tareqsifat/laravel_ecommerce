@@ -46,8 +46,14 @@
                                     <div class="form-group row">
                                         <label for="input-21" class="col-sm-2 col-form-label">User role</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="username" class="form-control" id="input-21" placeholder="User Name" />
-                                            @error('username')
+                                            {{-- <input type="text" name="username" class="form-control" id="" /> --}}
+                                            <select name="role_id" class="form-control" id="">
+                                                {{-- @foreach (App\Models\UserRole::get() as $item) --}}
+                                                @foreach ($user_roles as $item)
+                                                    <option value="{{ $item -> serial}}">{{ $item -> name }}</option>
+                                                @endforeach
+                                            </select>
+                                            @error('role_id')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>

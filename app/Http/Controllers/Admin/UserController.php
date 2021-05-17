@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use app\Models\User;
+use App\Models\UserRole;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,7 +30,8 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('admin.user.create');
+        $user_roles = UserRole::orderBy('serial','DESC')-> get();
+        return view('admin.user.create', compact('user_roles'));
     }
 
     public function edit()
