@@ -270,7 +270,7 @@
      </body>
      {{-- Modal part --}}
 
-     @stack('cjs')
+     @stack('cjs');
 
 
  
