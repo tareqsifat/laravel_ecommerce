@@ -82,7 +82,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="" class="updade_role_form" method="POST">
+                    <form action="" class="update_role_form" method="POST">
                         @csrf
                             <input type="hidden" name="id" value="">
                         <div class="form-group">
@@ -112,10 +112,10 @@
 
                 console.log(name, url, serial, id);
                  
-                $('upadate_role_form').attr('url',url);
-                $('update_role_form input[name = name]').val(name);
-                $('update_role_form input[name = serial]').val(serial);
-                $('update_role_form input[name = id]').val(id);
+                $('.upadate_role_form').attr('url',url);
+                $('.update_role_form input[name = name]').val(name);
+                $('.update_role_form input[name = serial]').val(serial);
+                $('.update_role_form input[name = id]').val(id);
 
             })
         </script>
