@@ -25,6 +25,8 @@
         <link href=" {{ asset('contents/admin') }}/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
         <!-- Custom Style-->
         <link href=" {{ asset('contents/admin') }}/css/app-style.css" rel="stylesheet" />
+        {{-- jquary --}}
+        <script src="{{ asset('js/app.js') }}"></script>
     </head>
 
     <body class="bg-theme bg-theme1">
@@ -270,14 +272,14 @@
      </body>
      {{-- Modal part --}}
 
-     @stack('cjs');
+     @stack('cjs')
 
 
  
      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
         @csrf
     </form>
-     <script src="{{ asset('contents/admin') }}/js/jquery.min.js"></script>
+    
      <script src="{{ asset('contents/admin') }}/js/popper.min.js"></script>
      <script src="{{ asset('contents/admin') }}/js/bootstrap.min.js"></script>
    
