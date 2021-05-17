@@ -29,6 +29,9 @@ class UserRoleController extends Controller
         $user_role -> serial = $request -> serial;
         $user_role ->id + $request -> id;
         $user_role -> created_at = Carbon::now() -> toDateTimeString();
-        $user_role -> creator = Auth::user -> id;
+        $user_role -> creator = Auth::user() -> id;
+        $user_role -> save();
+
+        return redirect()->back()->with('success','data updated');
     }
 }
