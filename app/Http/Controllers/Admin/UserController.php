@@ -82,7 +82,40 @@ class UserController extends Controller
 
     public function update(Request $request)
     {
-        //function_body
+        $this->validate($request,[ 
+            'first_name' => ['required'],
+            'last_name' => ['required'],
+            'username' => ['required'],
+            'email' => ['required'],
+            'image' => ['required', 'image'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]); 
+        
+
+        $user = new User();
+        $user -> first_name = $request -> first_name;
+        $user -> last_name = $request -> last_name;
+        $user -> username = $request -> username;
+        $user -> role_id = $request -> role_id;
+        $user -> email = $request -> email;
+        $user -> phone = $request -> phone;
+        $user -> photo = $request -> image;
+        $user -> password = Hash::make($request -> password); 
+        $user -> created_at = Carbon::now() ->toDateString();
+        $user -> creator = Auth::user()->id;
+        $user -> save();
+
+
+        $user -> slug =  $user -> id.uniqid(10);
+        $user -> save();
+
+        if($request -> hasFile('image')){
+            $user -> photo = Storage::put('uploads/user', $request -> file('image'));
+            $user -> save();
+        }
+
+         
+        return redirect()-> route('admin_user_view', $user->id);
     }
 
 }
