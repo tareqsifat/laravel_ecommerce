@@ -88,7 +88,6 @@ class UserController extends Controller
             'last_name' => ['required'],
             'username' => ['required'],
             'email' => ['required'],
-            'image' => ['required', 'image'],
         ]); 
     
 

@@ -79,6 +79,15 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
+                                        <label for="input-21" class="col-sm-2 col-form-label">Old Password</label>
+                                        <div class="col-sm-10">
+                                            <input type="password" name="old-password" class="form-control" id="input-21" placeholder="Enter Password"/>
+                                            @error('old-password') 
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
                                         <label for="input-21" class="col-sm-2 col-form-label">Password</label>
                                         <div class="col-sm-10">
                                             <input type="password" name="password" class="form-control" id="input-21" placeholder="Enter Password"/>
