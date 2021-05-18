@@ -131,7 +131,9 @@ class UserController extends Controller
         $user -> save();
 
         if($request -> hasFile('image')){
-            if(file_exists())
+            if(file_exists(public_path().'/'.$user->photo)){
+                unlink(public_path().'/'.$user->photo); 
+            }
             $user -> photo = Storage::put('uploads/user', $request -> file('image'));
             $user -> save();
         }
