@@ -139,8 +139,17 @@ class UserController extends Controller
         }
 
          
-        return redirect()-> route('admin_user_view', $user->id);
+        return redirect()->back()->with('success','data_updated');
     }
 
+    public function delete(Request $request)
+    {
+        $user = User::find($request->id);
+        $user -> status = 0;
+        $user -> creator = Auth::user()-> id;
+        $user -> save;
+
+        return redirect()->back()->with('success','data_deleted');
+    }
 }
 
