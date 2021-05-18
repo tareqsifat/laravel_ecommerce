@@ -38,7 +38,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $user_roles = USerRole::orderby('serial', 'DESC')-> get();
-        return view('admin.user.edit', compact('user_roles'));
+        return view('admin.user.edit', compact('user_roles', 'user'));
     }
 
     public function store(Request $request)

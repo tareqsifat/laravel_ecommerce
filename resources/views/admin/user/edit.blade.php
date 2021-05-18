@@ -14,12 +14,13 @@
                                 <div class="card-title">Update User</div>
                                 <hr />
                                                 
-                                <form method="POST" action="{{ route('admin_user_edit') }}" enctype="multipart/form-data">
+                                <form method="POST" action="{{ route('admin_user_update') }}" enctype="multipart/form-data">
                                     @csrf
+                                    <input type="hidden" name="id" value="{{ $user -> id }}">
                                     <div class="form-group row">
                                         <label for="input-21" class="col-sm-2 col-form-label">First Name</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" name="name" value ="{{ $user -> first_name }}">
+                                            <input type="text" name="first_name" value="{{ $user -> first_name }}" class="form-control" id="input-21" placeholder="First Name" />
                                             @error('first_name')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
@@ -28,7 +29,7 @@
                                     <div class="form-group row">
                                         <label for="input-21" class="col-sm-2 col-form-label">Last Name</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="last_name" class="form-control" id="input-21" placeholder="Last Name" />
+                                            <input type="text" name="last_name" value="{{ $user -> last_name }}" class="form-control" id="input-21" placeholder="Last Name" />
                                             @error('last_name')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
@@ -37,7 +38,7 @@
                                     <div class="form-group row">
                                         <label for="input-21" class="col-sm-2 col-form-label">User name</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="username" class="form-control" id="input-21" placeholder="User Name" />
+                                            <input type="text" name="username" value="{{ $user -> user_name }}" class="form-control" id="input-21" placeholder="User Name" />
                                             @error('username')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
@@ -62,7 +63,7 @@
                                     <div class="form-group row">
                                         <label for="input-21" class="col-sm-2 col-form-label">email</label>
                                         <div class="col-sm-10">
-                                            <input type="email" name="email" class="form-control" id="input-21" placeholder="Enter Your Email" />
+                                            <input type="email" name="email" value="{{ $user -> email }}" class="form-control" id="input-21" placeholder="Enter Your Email" />
                                             @error('email')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
@@ -71,7 +72,7 @@
                                     <div class="form-group row">
                                         <label for="input-21" class="col-sm-2 col-form-label">Mobile </label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="phone" class="form-control" id="input-21" placeholder="phone" />
+                                            <input type="text" name="phone" value="{{ $user -> phone }}" class="form-control" id="input-21" placeholder="phone" />
                                             @error('phone')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
@@ -98,7 +99,8 @@
                                     <div class="form-group row">
                                         <label for="input-21" class="col-sm-2 col-form-label">Image</label>
                                         <div class="col-sm-10">
-                                            <input type="file" name="image" class="form-control" id="input-21" />
+                                            <img src="/{{ $user -> photo }}" style="height: 45px; margin-top: 10px" alt="user photo"><br>
+                                            <input type="file" name="image"  class="form-control" id="input-21" />
                                             @error('image')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror 
@@ -107,7 +109,7 @@
                                     <div class="form-group row">
                                         <label class="col-sm-2 col-form-label"></label>
                                         <div class="col-sm-10">
-                                            <button type="submit" class="btn btn-white px-5"><i class="icon-lock"></i> Register</button>
+                                            <button type="submit" class="btn btn-white px-5"><i class="icon-lock"></i> update</button>
                                         </div>
                                     </div>
                                 </form>

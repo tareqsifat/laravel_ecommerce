@@ -1,0 +1,18 @@
+-------------------- Auto-Git Log --------------------
+		Tue May 18 2021 06:46:37 GMT+0600 (Bangladesh Standard Time)
+------------------------------------------------------
+
+Modified files:
+* app/Http/Controllers/Admin/UserController.php
+* app/Http/Controllers/Admin/UserRoleController.php
+* routes/web.php
+
+
+Created files:
+* resources/views/admin/user/edit.blade.php
+
+
+Deleted files:
+
+
+Renamed files:
