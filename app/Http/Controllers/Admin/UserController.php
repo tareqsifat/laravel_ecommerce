@@ -34,9 +34,11 @@ class UserController extends Controller
         return view('admin.user.create', compact('user_roles'));
     }
 
-    public function edit()
+    public function edit($id)
     {
-        return view('admin.user.view');
+        $user = User::find($id);
+        $user_roles = USerRole::orderby('serial', 'DESC')-> get();
+        return view('admin.user.edit', compact('user_roles'));
     }
 
     public function store(Request $request)
@@ -55,6 +57,7 @@ class UserController extends Controller
         $user -> first_name = $request -> first_name;
         $user -> last_name = $request -> last_name;
         $user -> username = $request -> username;
+        $user -> role_id = $request -> role_id;
         $user -> email = $request -> email;
         $user -> phone = $request -> phone;
         $user -> photo = $request -> image;
