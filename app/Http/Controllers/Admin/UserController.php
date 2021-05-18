@@ -90,9 +90,23 @@ class UserController extends Controller
             'image' => ['required', 'image'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]); 
-        
+    
 
-        $user = new User();
+        $user = User::find($request-> id);
+        if($user->email !=  $request->email){
+            $this-> validate($request, [
+                'email' => ['required', 'unique:users']
+            ]);
+        }
+
+        
+        $user = User::find($request-> id);
+        if($user->username !=  $request->username){
+            $this-> validate($request, [
+                'email' => ['required', 'unique:users']
+            ]);
+        }
+
         $user -> first_name = $request -> first_name;
         $user -> last_name = $request -> last_name;
         $user -> username = $request -> username;
