@@ -86,7 +86,6 @@ class UserController extends Controller
         $this->validate($request,[ 
             'first_name' => ['required'],
             'last_name' => ['required'],
-            'username' => ['required'],
             'email' => ['required'],
         ]); 
     
@@ -118,7 +117,11 @@ class UserController extends Controller
             $this->validate($request, [
                 'password' => ['string', 'min:8', 'confirmed'],
             ]);
-            $user -> password = Hash::make($request -> password); 
+            if(Hash::check($request -> old_password, $user-> password)){
+                $user -> password = Hash::make($request -> password);
+            }
+            else
+                return redirect()->back()->with('error','Old password does not matched');
         }
 
         $user -> first_name = $request -> first_name;
@@ -130,7 +133,7 @@ class UserController extends Controller
         $user -> save();
 
         if($request -> hasFile('image')){
-            if(file_exists(public_path().'/'.$user->photo)){
+            if(!file_exists(public_path().'/'.$user->photo)){
                 unlink(public_path().'/'.$user->photo); 
             }
             $user -> photo = Storage::put('uploads/user', $request -> file('image'));

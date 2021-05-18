@@ -14,7 +14,7 @@
                                 <div class="card-title">Update User</div>
                                 <hr />
                                                 
-                                <form method="POST" action="{{ route('admin_user_update') }}" enctype="multipart/form-data">
+                                <form method="POST" action="{{ route('admin_user_update') }}" enctype="multipart/form-data" autocomplete="off">
                                     @csrf
                                     <input type="hidden" name="id" value="{{ $user -> id }}">
                                     <div class="form-group row">
@@ -35,10 +35,10 @@
                                             @enderror
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="input-21" class="col-sm-2 col-form-label">User name</label>
+                                    <div class="form-group row" autocomplete="off">
+                                        <label for="input-21" class="col-sm-2 col-form-label">Username</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="username" value="{{ $user -> user_name }}" class="form-control" id="input-21" placeholder="User Name" />
+                                            <input type="text" name="username" value="{{ $user -> username }}" class="form-control" id="input-21" placeholder="User Name" />
                                             @error('username')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
@@ -60,7 +60,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group row">
+                                    <div class="form-group row" autocomplete="off">
                                         <label for="input-21" class="col-sm-2 col-form-label">email</label>
                                         <div class="col-sm-10">
                                             <input type="email" name="email" value="{{ $user -> email }}" class="form-control" id="input-21" placeholder="Enter Your Email" />
@@ -81,8 +81,8 @@
                                     <div class="form-group row">
                                         <label for="input-21" class="col-sm-2 col-form-label">Old Password</label>
                                         <div class="col-sm-10">
-                                            <input type="password" name="old-password" class="form-control" id="input-21" placeholder="Enter Password"/>
-                                            @error('old-password') 
+                                            <input type="password" name="old_password" class="form-control" id="input-21" placeholder="Enter Old Password"/>
+                                            @error('old_password') 
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>
