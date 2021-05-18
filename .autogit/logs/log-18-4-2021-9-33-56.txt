@@ -1,0 +1,15 @@
+-------------------- Auto-Git Log --------------------
+		Tue May 18 2021 09:33:56 GMT+0600 (Bangladesh Standard Time)
+------------------------------------------------------
+
+Modified files:
+
+
+Created files:
+* .autogit/logs/log-18-4-2021-9-3-38.txt
+
+
+Deleted files:
+
+
+Renamed files:

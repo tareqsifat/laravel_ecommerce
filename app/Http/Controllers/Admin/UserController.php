@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use phpDocumentor\Reflection\Types\Null_;
 use Symfony\Contracts\Service\Attribute\Required;
 
 class UserController extends Controller
@@ -99,13 +100,24 @@ class UserController extends Controller
             ]);
         }
 
-        
-        $user = User::find($request-> id);
+
+
         if($user->username !=  $request->username){
             $this-> validate($request, [
                 'email' => ['required', 'unique:users']
             ]);
         }
+
+        if($user->phone !=  $request->phone){
+            $this-> validate($request, [
+                'phone' => ['required', 'unique:users']
+            ]);
+        
+        if($user->password != Null && $user->cpassword != Null)
+        
+        }
+
+        $user->password 
 
         $user -> first_name = $request -> first_name;
         $user -> last_name = $request -> last_name;
