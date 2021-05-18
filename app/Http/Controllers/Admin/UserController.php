@@ -89,7 +89,6 @@ class UserController extends Controller
             'username' => ['required'],
             'email' => ['required'],
             'image' => ['required', 'image'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]); 
     
 
@@ -98,6 +97,7 @@ class UserController extends Controller
             $this-> validate($request, [
                 'email' => ['required', 'unique:users']
             ]);
+            $user -> email = $request -> email;
         }
 
 
@@ -106,36 +106,32 @@ class UserController extends Controller
             $this-> validate($request, [
                 'email' => ['required', 'unique:users']
             ]);
+            $user -> username = $request -> username;
         }
 
         if($user->phone !=  $request->phone){
             $this-> validate($request, [
                 'phone' => ['required', 'unique:users']
             ]);
-        
-        if($user->password != Null && $user->cpassword != Null)
-        
+            $user -> phone = $request -> phone;
         }
-
-        $user->password 
+        if($user->password != Null && $user-> password_confirmation != Null){
+            $this->validate($request, [
+                'password' => ['string', 'min:8', 'confirmed'],
+            ]);
+            $user -> password = Hash::make($request -> password); 
+        }
 
         $user -> first_name = $request -> first_name;
         $user -> last_name = $request -> last_name;
-        $user -> username = $request -> username;
         $user -> role_id = $request -> role_id;
-        $user -> email = $request -> email;
-        $user -> phone = $request -> phone;
         $user -> photo = $request -> image;
-        $user -> password = Hash::make($request -> password); 
-        $user -> created_at = Carbon::now() ->toDateString();
+        $user -> updated_at = Carbon::now() ->toDateString();
         $user -> creator = Auth::user()->id;
         $user -> save();
 
-
-        $user -> slug =  $user -> id.uniqid(10);
-        $user -> save();
-
         if($request -> hasFile('image')){
+            if(file_exists())
             $user -> photo = Storage::put('uploads/user', $request -> file('image'));
             $user -> save();
         }
