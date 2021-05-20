@@ -154,5 +154,11 @@ class UserController extends Controller
         // dd($user);
         return redirect()->back()->with('success','data_deactivated');
     }
+
+    public function test($id)
+    {
+        //function_body
+        return 'we got your id '.$id;
+    }
 }
 

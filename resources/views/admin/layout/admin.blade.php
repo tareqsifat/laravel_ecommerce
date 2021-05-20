@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <!-- Mirrored from codervent.com/dashtremev3/pages-blank-page.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2020 09:42:04 GMT -->
     <head>
         <meta charset="utf-8" />
+        <!-- CSRF Token -->
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="Ecommarce Controll dashboard" />
@@ -29,6 +31,15 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
         {{-- jquary --}}
         <script src="{{ asset('js/app.js') }}"></script>
+        {{-- <script src="{{ asset('contents/admin') }}/js/jquery.min.js"></script> --}}
+        {{-- ajax.setup --}}
+        <script>
+            $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+            });
+        </script>
     </head>
 
     <body class="bg-theme bg-theme1">

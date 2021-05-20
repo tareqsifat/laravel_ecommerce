@@ -49,6 +49,7 @@ function(){
     Route::get('/edit/{id}','UserController@edit')->name('admin_user_edit');
     Route::post('/update','UserController@update')->name('admin_user_update');
     Route::post('/delete','UserController@delete')->name('admin_user_delete');
+    Route::get('/test/{id}','UserController@test')->name('admin_user_test');
     
 });
  

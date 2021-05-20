@@ -49,9 +49,8 @@
                                                             class="btn btn-warning waves-effect waves-light m-1">
                                                             <i class="fa fa-pencil"></i> <span>edit</span>
                                                         </a>
-                                                        <a type="button" action="" href="" 
-                                                             data-toggle="modal" data-target="#deleteModal"
-                                                             onclick="return (modal_delete_form.action = '{{ route('admin_user_delete') }}', modal_delete_form.id.value = '{{ $item->id}}')"
+                                                        <a type="button" href="#"
+                                                             onclick="return confirm('sure!!! you want to delete?') && ($.post('{{ route('admin_user_delete',['id'=>$item->id])}}',(res)=>{console.log(res,$(this).parents('tr').remove())}))" 
                                                              class="delete-btn btn btn-danger waves-effect waves-light m-1">
                                                             <i class="fa fa-trash-o"></i> <span>delete</span>
                                                         </a>
