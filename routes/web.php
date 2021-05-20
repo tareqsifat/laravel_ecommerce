@@ -27,6 +27,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::post('/login','Auth\LoginController@login')->middleware('check_user_is_active');
+
 Route::get('/admin','Admin\AdminController@index')->name('admin_detail');
 
 Route::get('/admin','AdminController@index')->name('admin_index') ->middleware('auth');
@@ -35,7 +37,7 @@ Route::get('/admin','AdminController@index')->name('admin_index') ->middleware('
 // User management
 Route::group( [
     'prefix'=>'user',
-    'middleware'=>['auth'],
+    'middleware'=>['auth', 'check_user_is_active' ,'super_admin'],
     'namespace' => 'Admin' 
 
 ],

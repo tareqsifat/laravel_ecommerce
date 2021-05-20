@@ -20,7 +20,7 @@
                                     <div class="form-group row">
                                         <label for="input-21" class="col-sm-2 col-form-label">First Name</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="first_name" value="{{ $user -> first_name }}" class="form-control" id="input-21" placeholder="First Name" />
+                                            <input type="text" name="first_name" value="{{ $user->first_name }}" class="form-control" id="input-21" placeholder="First Name" />
                                             @error('first_name')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
@@ -29,7 +29,7 @@
                                     <div class="form-group row">
                                         <label for="input-21" class="col-sm-2 col-form-label">Last Name</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="last_name" value="{{ $user -> last_name }}" class="form-control" id="input-21" placeholder="Last Name" />
+                                            <input type="text" name="last_name" value="{{ $user->last_name }}" class="form-control" id="input-21" placeholder="Last Name" />
                                             @error('last_name')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
@@ -38,7 +38,7 @@
                                     <div class="form-group row" autocomplete="off">
                                         <label for="input-21" class="col-sm-2 col-form-label">Username</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="username" value="{{ $user -> username }}" class="form-control" id="input-21" placeholder="User Name" />
+                                            <input type="text" name="username" value="{{ $user->username }}" class="form-control" id="input-21" placeholder="User Name" />
                                             @error('username')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
@@ -51,7 +51,7 @@
                                             <select name="role_id" class="form-control" id="">
                                                 {{-- @foreach (App\Models\UserRole::get() as $item) --}}
                                                 @foreach ($user_roles as $item)
-                                                    <option value="{{ $item -> serial}}">{{ $item -> name }}</option>
+                                                    <option value="{{ $item->serial}}">{{ $item->name }}</option>
                                                 @endforeach
                                             </select>
                                             @error('role_id')
@@ -63,7 +63,7 @@
                                     <div class="form-group row" autocomplete="off">
                                         <label for="input-21" class="col-sm-2 col-form-label">email</label>
                                         <div class="col-sm-10">
-                                            <input type="email" name="email" value="{{ $user -> email }}" class="form-control" id="input-21" placeholder="Enter Your Email" />
+                                            <input type="email" name="email" value="{{ $user->email }}" class="form-control" id="input-21" placeholder="Enter Your Email" />
                                             @error('email')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
@@ -72,7 +72,7 @@
                                     <div class="form-group row">
                                         <label for="input-21" class="col-sm-2 col-form-label">Mobile </label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="phone" value="{{ $user -> phone }}" class="form-control" id="input-21" placeholder="phone" />
+                                            <input type="text" name="phone" value="{{ $user->phone }}" class="form-control" id="input-21" placeholder="phone" />
                                             @error('phone')
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
