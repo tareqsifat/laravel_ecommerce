@@ -274,6 +274,36 @@
          <!--End wrapper-->  
      </body>
      {{-- Modal part --}}
+    <!-- Button trigger modal -->
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" 
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">User Delete</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="" name="modal_delete_form" method="POST">
+                    @csrf
+                    <div class="modal-body">
+                        <input type="hidden" name="id">
+                        <h5>Sure!! you want to delete?</h5>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
 
      @stack('cjs')
 
@@ -284,6 +314,7 @@
     </form>
     
      <script src="{{ asset('contents/admin') }}/js/popper.min.js"></script>
+     <script src="{{ asset('contents/admin') }}/custom.js"></script>
      <script src="{{ asset('contents/admin') }}/js/bootstrap.min.js"></script>
    
      <!-- simplebar js -->

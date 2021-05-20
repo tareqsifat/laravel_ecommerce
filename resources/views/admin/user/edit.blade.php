@@ -82,9 +82,12 @@
                                         <label for="input-21" class="col-sm-2 col-form-label">Old Password</label>
                                         <div class="col-sm-10">
                                             <input type="password" name="old_password" class="form-control" id="input-21" placeholder="Enter Old Password"/>
-                                            @error('old_password') 
+                                            {{-- @error('old_password') 
                                                 <span class="text-danger">{{ $message }}</span>
-                                            @enderror
+                                            @enderror --}}
+                                            @if(Session::has('old_password'))
+                                                <span class="text-danger">{{ Session::get('old_password') }}</span>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="form-group row">

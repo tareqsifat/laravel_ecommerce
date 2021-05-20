@@ -6,20 +6,20 @@ use App\Http\Controllers\Controller;
 use app\Models\User;
 use App\Models\UserRole;
 use Carbon\Carbon;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
-use phpDocumentor\Reflection\Types\Null_;
-use Symfony\Contracts\Service\Attribute\Required;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
     public function index()
     {
-        $collection = User::get();
-        return view('admin.user.index', ['collection' => $collection]);
-    }
+        $collection = User::active()->get(); 
+        return view('admin.user.index',['collection'=>$collection]);
+    } 
 
     public function view($id)
     {
@@ -37,8 +37,8 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        $user = User::find($id);
         $user_roles = USerRole::orderby('serial', 'DESC')-> get();
+        $user = User::find($id);
         return view('admin.user.edit', compact('user_roles', 'user'));
     }
 
@@ -53,7 +53,6 @@ class UserController extends Controller
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]); 
         
-
         $user = new User();
         $user -> first_name = $request -> first_name;
         $user -> last_name = $request -> last_name;
@@ -61,44 +60,41 @@ class UserController extends Controller
         $user -> role_id = $request -> role_id;
         $user -> email = $request -> email;
         $user -> phone = $request -> phone;
-        $user -> photo = $request -> image;
-        $user -> password = Hash::make($request -> password); 
-        $user -> created_at = Carbon::now() ->toDateString();
+        $user -> password = Hash::make($request->password); 
+        $user -> created_at = Carbon::now()->toDateString();
         $user -> creator = Auth::user()->id;
         $user -> save();
 
-
-        $user -> slug =  $user -> id.uniqid(10);
+        $user -> slug =  $user->id.uniqid(10);
         $user -> save();
 
         if($request -> hasFile('image')){
-            $user -> photo = Storage::put('uploads/user', $request -> file('image'));
+            $user -> photo = Storage::put('uploads/user',$request->file('image'));
             $user -> save();
         }
 
-         
-        return redirect()-> route('admin_user_view', $user->id);
-        // dd($request->all());re
+        // dd($request->all());
+        //function_body
+        return redirect()-> route('admin_user_view',$user->id);
        }
 
     public function update(Request $request)
     {
+
         $this->validate($request,[ 
             'first_name' => ['required'],
             'last_name' => ['required'],
             'email' => ['required'],
         ]); 
     
-
         $user = User::find($request-> id);
+
         if($user->email !=  $request->email){
             $this-> validate($request, [
-                'email' => ['required', 'unique:users']
+                'email' => ['required','unique:users']
             ]);
-            $user -> email = $request -> email;
+            $user-> email = $request-> email;
         }
-
-
 
         if($user->username !=  $request->username){
             $this-> validate($request, [
@@ -109,49 +105,54 @@ class UserController extends Controller
 
         if($user->phone !=  $request->phone){
             $this-> validate($request, [
-                'phone' => ['required', 'unique:users']
+                'phone' => ['required','unique:users']
             ]);
             $user -> phone = $request -> phone;
         }
-        if($user->password != Null && $user-> password_confirmation != Null){
+
+        if(!is_null($request -> old_password) && !is_null($request->password) && !is_null($request-> password_confirmation)){
             $this->validate($request, [
                 'password' => ['string', 'min:8', 'confirmed'],
             ]);
+
+
             if(Hash::check($request -> old_password, $user-> password)){
-                $user -> password = Hash::make($request -> password);
+                $user->password = Hash::make($request->password);
             }
             else
-                return redirect()->back()->with('error','Old password does not matched');
+                if($request->ajax()){
+                    $validator = Validator::make([],[]);
+                    return $validator->getMessageBag()->add('old_password', 'old password wrong' );
+                }
+                return redirect()->back()->withErrors('old_password','old password wrong');
         }
 
         $user -> first_name = $request -> first_name;
         $user -> last_name = $request -> last_name;
         $user -> role_id = $request -> role_id;
-        $user -> photo = $request -> image;
         $user -> updated_at = Carbon::now() ->toDateString();
         $user -> creator = Auth::user()->id;
         $user -> save();
 
-        if($request -> hasFile('image')){
+        if($request->hasFile('image')){
             if(!file_exists(public_path().'/'.$user->photo)){
-                unlink(public_path().'/'.$user->photo); 
+                unlink(public_path().'/'.$user->photo);
             }
-            $user -> photo = Storage::put('uploads/user', $request -> file('image'));
-            $user -> save();
+            $user->photo = Storage::put('uploads/user',$request->file('image'));
+            $user->save();
         }
 
-         
         return redirect()->back()->with('success','data_updated');
     }
-
+    
     public function delete(Request $request)
     {
         $user = User::find($request->id);
         $user -> status = 0;
         $user -> creator = Auth::user()-> id;
-        $user -> save;
-
-        return redirect()->back()->with('success','data_deleted');
+        $user -> save();
+        // dd($user);
+        return redirect()->back()->with('success','data_deactivated');
     }
 }
 
