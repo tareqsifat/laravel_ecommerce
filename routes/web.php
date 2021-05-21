@@ -22,6 +22,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/website','webController@index')->name('website_index');
 
 Route::get('/', function () {
     return view('welcome');

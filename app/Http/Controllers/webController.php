@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 
 class webController extends Controller
 {
-    public function about()
+    public function index()
     {
-        return view('about');
+        return view('website.index');
     }
 }
