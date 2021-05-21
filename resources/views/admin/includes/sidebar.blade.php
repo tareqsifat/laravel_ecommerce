@@ -25,22 +25,27 @@
             </li>
         </ul>
     </li>
-    <li>
-        <a class="has-arrow" href="javascript:void();">
-            <div class="parent-icon"><i class="zmdi zmdi-view-dashboard"></i></div>
-            <div class="menu-title">User Management</div> 
-        </a>
-        <ul class="">
-            <li>
-                <a href="{{ route('admin_user_index') }}">
-                    <i class="zmdi zmdi-dot-circle-alt"></i> index</a>
-            </li> 
-            <li>
-                <a href="{{ route('admin_user_role_index') }}">
-                    <i class="zmdi zmdi-dot-circle-alt"></i> User Role</a>
-            </li> 
-        </ul>
-    </li>
+    
+    @if (Auth::check() && Auth::user()->role_id ==1)
+        <li>
+            <a class="has-arrow" href="javascript:void();">
+                <div class="parent-icon"><i class="zmdi zmdi-view-dashboard"></i></div>
+                <div class="menu-title">User Management</div> 
+            </a>
+            <ul class="">
+                <li>
+                    <a href="{{ route('admin_user_index') }}">
+                        <i class="zmdi zmdi-dot-circle-alt"></i> index</a>
+                </li> 
+                <li>
+                    <a href="{{ route('admin_user_role_index') }}">
+                        <i class="zmdi zmdi-dot-circle-alt"></i> User Role</a>
+                </li> 
+            </ul>
+        </li>
+    @endif
+
+    
     
 
 <li class="menu-label">Extra</li>
@@ -49,7 +54,7 @@
                 <div class="parent-icon">
                     <i class="zmdi zmdi-globe"></i>
                 </div>
-                <div class="menu-title">Website</div>
+                <div class="menu-title">Home</div>
             </a>
         </li>
 

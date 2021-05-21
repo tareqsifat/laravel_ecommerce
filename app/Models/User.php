@@ -47,4 +47,10 @@ class User extends Authenticatable
     {
         return $query->where('status', 1);
     }
+
+    public function role_information()
+    {
+        //function_body
+        return $this->belongsTo('App\Models\UserRole','role_id','id');
+    }
 }

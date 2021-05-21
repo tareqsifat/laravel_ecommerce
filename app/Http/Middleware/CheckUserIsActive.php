@@ -17,7 +17,7 @@ class CheckUserIsActive
      */
     public function handle(Request $request, Closure $next)
     {
-        dd( 'got', Auth::check());
+        // dd( 'got', Auth::check());
         if(Auth::check() && Auth::user()-> status == 1){
             return $next($request);
         }

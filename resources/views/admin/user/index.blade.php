@@ -37,7 +37,8 @@
                                                 <td>{{ $item->last_name }}</td>
                                                 <td>{{ $item->username }}</td>
                                                 <td>{{ $item->email }}</td>
-                                                <td>{{ $item->role_id }}</td>
+                                                {{-- <td>{{ $item->role_id }}</td> --}}
+                                                <td>{{ $item->role_information ? $item ->role_information->name : $item->id }}</td>
                                                 <td>{{ $item->created_at->format('d M Y h:i:s a') }}</td>
                                                 <td>
                                                     <div>

@@ -27,7 +27,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/login','Auth\LoginController@login')->middleware('check_user_is_active');
+// Route::post('/login','Auth\LoginController@login')->middleware('check_user_is_active');
 
 Route::get('/admin','Admin\AdminController@index')->name('admin_detail');
 

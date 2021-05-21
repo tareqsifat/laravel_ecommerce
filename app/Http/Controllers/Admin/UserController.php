@@ -17,7 +17,8 @@ class UserController extends Controller
 {
     public function index()
     {
-        $collection = User::active()->get(); 
+        $collection = User::active()->with('role_information')->get(); 
+        // dd($collection);
         return view('admin.user.index',['collection'=>$collection]);
     } 
 
