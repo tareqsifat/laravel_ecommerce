@@ -79,10 +79,7 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-xl-3 col-lg-4 d-none d-lg-block">
-                                <div class="categories-menu text-uppercase home3-bg2 home3-categories-menu click">
-                                    <i class="fa fa-list-ul"></i>
-                                    <span>All Categories</span>
-                                </div>
+                                
                                 @include('website.ecommerce.layouts.sidebar')
                             </div>
                             <div class="col-xl-7 col-lg-6 col-md-8 col-12">

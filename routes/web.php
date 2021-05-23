@@ -27,6 +27,9 @@ Route::get('/website','webController@index')->name('website_index');
 Route::get('/products','webController@products')->name('website_products');
 Route::get('/details','webController@details')->name('website_details');
 Route::get('/cart','webController@cart')->name('website_cart');
+Route::get('/checkout','webController@checkout')->name('website_checkout');
+Route::get('/wishlist','webController@wishlist')->name('website_wishlist');
+Route::get('/contact','webController@contact')->name('website_contact');
 
 
 Route::get('/', function () {
