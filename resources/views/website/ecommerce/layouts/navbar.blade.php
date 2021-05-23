@@ -15,7 +15,7 @@
                     <a class="mega-title" href="#">Shop Layout</a>
                     <a href="shop-full-width.html">Full Width</a>
                     <a href="shop-sitebar-right.html">Sidebar Right</a>
-                    <a href="shop-sitebar-left.html">Sidebar Left</a>
+                    <a href="/products">Sidebar Left</a>
                     <a href="Shop-list-view.html">List View</a>
                 </span>
                 <span>
