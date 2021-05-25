@@ -13,7 +13,7 @@ class webController extends Controller
 
     public function products()
     {
-        return view('website.ecommerce.product.products');
+        return view('website.ecommerce.products');
     }
 
     public function details()
