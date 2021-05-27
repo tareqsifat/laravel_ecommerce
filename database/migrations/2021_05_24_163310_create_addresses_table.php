@@ -15,8 +15,9 @@ class CreateAddressesTable extends Migration
     {
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id','10')->nullable();
-            $table->integer('country_id','10')->nullable();
+            $table->integer('user_id')->nullable();
+            $table->integer('country_id')->nullable();
+            $table->integer('city_id')->nullable();
             $table->string('name','100')->nullable();
             $table->string('address1','100')->nullable();
             $table->string('address2','100')->nullable();
@@ -25,7 +26,10 @@ class CreateAddressesTable extends Migration
             $table->string('zip_code','100')->nullable();
             $table->string('Phone','100')->nullable();
             $table->string('mobile','100')->nullable();
-            $table->string('comment','50')->nullable();
+            $table->text('comment','50')->nullable();
+            $table->string('creator',100)->nullable();
+            $table->string('slug',100)->nullable();
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }
