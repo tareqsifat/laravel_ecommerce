@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\WebsiteController;
+use Illuminate\Routing\RouteRegistrar;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -99,6 +100,22 @@ Route::group( ['prefix'=>'admin',
     Route::get('/blade-create','AdminController@blade_create')->name('admin_blade_create');
     Route::get('/blade-view','AdminController@blade_view')->name('admin_blade_view');
 
+});
+
+
+Route::group( [
+    'prefix'=>'admin/product',
+    'middleware'=>['auth'],
+    'namespace' => 'Product' 
+
+], function(){ 
+
+    // basic page  
+    Route::get('/index','ProductController@index')->name('admin_product_index');
+    Route::get('/create','ProductController@create')->name('admin_product_create');
+    Route::get('/show','ProductController@show')->name('admin_product_view');
+
+    Route::resource('brand', 'brandController');
 });
 
 

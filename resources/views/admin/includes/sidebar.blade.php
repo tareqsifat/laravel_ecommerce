@@ -26,6 +26,19 @@
             </li>
         </ul>
     </li>
+    <li>
+        <a class="has-arrow" href="javascript:void();">
+            <div class="parent-icon">
+                <i class="fa fa-shopping-cart"></i></div>
+            <div class="menu-title">Product Management</div> 
+        </a>
+        <ul class="">
+            <li>
+                <a href="{{ route('admin_product_create') }}"><i class="zmdi zmdi-dot-circle-alt"></i>Add Product</a>
+
+            </li>
+        </ul>
+    </li>
     
     @if (Auth::check() && Auth::user()->role_id ==1)
         <li>
