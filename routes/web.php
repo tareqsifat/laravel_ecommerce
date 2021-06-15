@@ -115,7 +115,14 @@ Route::group( [
     Route::get('/create','ProductController@create')->name('admin_product_create');
     Route::get('/show','ProductController@show')->name('admin_product_view');
 
-    Route::resource('brand', 'brandController');
+    Route::resource('brand', 'BrandController');
+    Route::resource('main_category', 'MainCategoryController');
+    Route::resource('category', 'CategoryController');
+    Route::resource('sub_Category', 'SubCategoryController');
+    Route::resource('color', 'ColorController');
+    Route::resource('size', 'SizeController');
+    Route::resource('unit', 'UnitController');
+    Route::resource('brand', 'BrandController');
 });
 
 

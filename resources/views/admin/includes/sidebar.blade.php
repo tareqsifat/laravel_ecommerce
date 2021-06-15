@@ -2,7 +2,7 @@
     <li>
         <a class="has-arrow" href="javascript:void();">
             <div class="parent-icon"><i class="zmdi zmdi-view-dashboard"></i></div>
-            <div class="menu-title">Dashboard</div>
+            <div class="menu-title">Dashboard</div> 
         </a>
         <ul class="">
             <li>
@@ -35,7 +35,9 @@
         <ul class="">
             <li>
                 <a href="{{ route('admin_product_create') }}"><i class="zmdi zmdi-dot-circle-alt"></i>Add Product</a>
-
+            </li>
+            <li>
+                <a href="{{ route('brand.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i>Brand</a>
             </li>
         </ul>
     </li>
