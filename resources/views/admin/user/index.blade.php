@@ -44,16 +44,22 @@
                                                     <div>
                                                         <a type="button" href="{{ route('admin_user_view', $item->id) }}"
                                                              class="btn btn-light waves-effect waves-light m-1"> 
-                                                             <i class="fa fa-eye"></i> <span>view</span> </a>
+                                                             <i class="fa fa-eye"></i>
+                                                              <span>view</span>
+                                                        </a>
 
                                                         <a type="button" href="{{ route('admin_user_edit',$item->id) }}" 
                                                             class="btn btn-warning waves-effect waves-light m-1">
-                                                            <i class="fa fa-pencil"></i> <span>edit</span>
+                                                            <i class="fa fa-pencil"></i>
+                                                            <span>edit</span>
                                                         </a>
                                                         <a type="button" href="#"
-                                                             onclick="return confirm('sure!!! you want to delete?') && ($.post('{{ route('admin_user_delete',['id'=>$item->id])}}',(res)=>{console.log(res,$(this).parents('tr').remove())}))" 
+                                                             onclick="return confirm('sure!!! you want to delete?') &&
+                                                             ($.post('{{ route('admin_user_delete',['id'=>$item->id])}}',
+                                                             (res)=>{console.log(res,$(this).parents('tr').remove())}))" 
                                                              class="delete-btn btn btn-danger waves-effect waves-light m-1">
-                                                            <i class="fa fa-trash-o"></i> <span>delete</span>
+                                                            <i class="fa fa-trash-o"></i>
+                                                            <span>delete</span>
                                                         </a>
                                                     </div>
                                                 </td>

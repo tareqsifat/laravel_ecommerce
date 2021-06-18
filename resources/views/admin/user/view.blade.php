@@ -24,13 +24,13 @@
                                         <tr>
                                             <td style="width: 40%">First Name</td>
                                             <td>:</td>
-                                            <td>{{ $user-> first_name }}
+                                            <td>{{ $user->first_name }}
                                             </td>
                                         </tr>
                                         <tr>
                                             <td style="width: 40%"> Last Name</td>
                                             <td>:</td>
-                                            <td>{{ $user-> last_name }}
+                                            <td>{{ $user->last_name }}
                                             </td>
                                         </tr>
                                         <tr>

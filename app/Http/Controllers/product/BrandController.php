@@ -4,6 +4,10 @@ namespace App\Http\Controllers\product;
 
 use App\Http\Controllers\Controller;
 use App\Models\Brand;
+use App\Models\MainCategory;
+use App\Models\status;
+use GrahamCampbell\ResultType\Success;
+use GuzzleHttp\Psr7\UploadedFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +22,15 @@ class BrandController extends Controller
      */
     public function index()
     {
-        return view('admin.product.brand.index');
+        $main_categories = MainCategory::where('status',1)->get();
+
+        $collection = Brand::where('status',1)->latest()->paginate(10);
+        return view('admin.product.brand.index',compact('collection'));
+    }
+
+    public function get($id)
+    {
+        //function_body
     }
 
     /**
@@ -68,7 +80,7 @@ class BrandController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('admin.Product.brand.view');
     }
 
     /**
@@ -77,9 +89,9 @@ class BrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Brand $brand)
     {
-        //
+        return view('admin.Product.brand.edit', ['brand'=> $brand]);
     }
 
     /**
@@ -89,10 +101,25 @@ class BrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,Brand $brand)
     {
-        //
+        $this->validate($request,[
+            'name' => ['required']
+        ]);
+
+        $brand->update($request->except('icon'));
+        if($request->hasFile('icon')){
+            $brand->logo = Storage::put('uploads/maincategory', $request->file('icon'));
+            $brand->save();
+        }
+
+        $brand->slug = str::slug($brand->name);
+        $brand->creator = Auth::user()->id;
+        $brand-> save();
+
+        return 'success';
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -100,8 +127,9 @@ class BrandController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Brand $brand)
     {
-        //
+        $brand->delete();
+        return response('success');
     }
 }

@@ -24,7 +24,6 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/website','webController@index')->name('website_index');
-
 Route::get('/products','webController@products')->name('website_products');
 Route::get('/details','webController@details')->name('website_details');
 Route::get('/cart','webController@cart')->name('website_cart');

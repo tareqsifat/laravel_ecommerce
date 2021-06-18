@@ -37,18 +37,21 @@ $(function(){
             success:(res)=>{
                 console.log(res); 
                 $(this).trigger('reset');
+                $('.preloader').hide();
             },
             error:(err)=>{
-                console.log(err.responseJSON.errors);
 
                 let errors = err.responseJSON.errors;
                 for (const key in errors) {
                     if (Object.hasOwnProperty.call(errors, key)) {
                         const element = errors[key];
                         $(`.${key}`).text(element);
-                        console.log(key, element);
                     }
                 }
+                $('.preloader').hide();
+            },
+            beforeSend:()=>{
+                $('.preloader').show();
             }
         })
     })

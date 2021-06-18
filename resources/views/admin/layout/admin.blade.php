@@ -27,6 +27,10 @@
         <link href=" {{ asset('contents/admin') }}/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
         <!-- Custom Style-->
         <link href=" {{ asset('contents/admin') }}/css/app-style.css" rel="stylesheet" />
+        {{-- custom js --}}
+        
+        {{-- custom css --}}
+        <link rel="stylesheet" href="{{ asset('contents/admin') }}/custom.css">
         {{-- SweetAlart cdn --}}
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
         {{-- jquary --}}
@@ -58,6 +62,8 @@
                 </div>
 
                 @include('admin.includes.sidebar')
+
+                
             </div>
             <!--End sidebar-wrapper-->
 
