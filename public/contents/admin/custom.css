@@ -1,7 +1,9 @@
-.insert_form {
+.insert_form,
+.update_form {
   position: relative;
 }
-.insert_form .preloader {
+.insert_form .preloader,
+.update_form .preloader {
   position: absolute;
   top: 50%;
   left: 50%;

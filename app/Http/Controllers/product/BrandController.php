@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Brand;
 use App\Models\MainCategory;
 use App\Models\status;
+use Attribute;
 use GrahamCampbell\ResultType\Success;
 use GuzzleHttp\Psr7\UploadedFile;
 use Illuminate\Http\Request;
@@ -79,8 +80,10 @@ class BrandController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        return view('admin.Product.brand.view');
+    {   
+        $brand = Brand::find($id);
+        // dd($brand);
+        return view('admin.Product.brand.view',compact('brand'));
     }
 
     /**
@@ -103,6 +106,7 @@ class BrandController extends Controller
      */
     public function update(Request $request,Brand $brand)
     {
+        // return dd($request-> all(), $brand);
         $this->validate($request,[
             'name' => ['required']
         ]);
@@ -117,7 +121,8 @@ class BrandController extends Controller
         $brand->creator = Auth::user()->id;
         $brand-> save();
 
-        return 'success';
+        // return 'success';
+        return redirect()->back();
     }
 
 

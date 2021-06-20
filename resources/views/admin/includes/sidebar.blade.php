@@ -39,6 +39,24 @@
             <li>
                 <a href="{{ route('brand.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i>Brand</a>
             </li>
+            <li>
+                <a href="{{ route('brand.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i>Main Category</a>
+            </li>
+            <li>
+                <a href="{{ route('brand.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i>Category</a>
+            </li>
+            <li>
+                <a href="{{ route('brand.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i>Sub Category</a>
+            </li>
+            <li>
+                <a href="{{ route('brand.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i>color</a>
+            </li>
+            <li>
+                <a href="{{ route('brand.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i>Size</a>
+            </li>
+            <li>
+                <a href="{{ route('brand.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i>Unit</a>
+            </li>
         </ul>
     </li>
     

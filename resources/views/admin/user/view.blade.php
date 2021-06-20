@@ -36,13 +36,13 @@
                                         <tr>
                                             <td style="width: 40%"> User Name</td>
                                             <td>:</td>
-                                            <td>{{ $user-> username }}
+                                            <td>{{ $user->username }}
                                             </td>
                                         </tr>
                                         <tr>
                                             <td style="width: 40%"> Email</td>
                                             <td>:</td>
-                                            <td>{{ $user-> email }}
+                                            <td>{{ $user->email }}
                                             </td>
                                         </tr>
                                         <tr>

@@ -35,7 +35,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return view('admin.Product.create');
     }
 
     /**
@@ -57,7 +57,7 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        // return view('admin.prduct.b');
+        return view('admin.product');
     }
 
     /**

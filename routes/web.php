@@ -121,7 +121,6 @@ Route::group( [
     Route::resource('color', 'ColorController');
     Route::resource('size', 'SizeController');
     Route::resource('unit', 'UnitController');
-    Route::resource('brand', 'BrandController');
 });
 
 

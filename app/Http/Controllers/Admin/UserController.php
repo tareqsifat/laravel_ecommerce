@@ -26,7 +26,6 @@ class UserController extends Controller
     {
         // $user = User::where('id', $id)->first();
         $user = User::find($id);
-        // dd($user);
         return view('admin.user.view', compact('user'));
     }
 
