@@ -40,22 +40,14 @@
                 <a href="{{ route('brand.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i>Brand</a>
             </li>
             <li>
-                <a href="{{ route('brand.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i>Main Category</a>
+                <a href="{{ route('main_category.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i>Main Category</a>
+            </li>
             </li>
             <li>
-                <a href="{{ route('brand.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i>Category</a>
+                <a href="{{ route('size.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i>Size</a>
             </li>
             <li>
-                <a href="{{ route('brand.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i>Sub Category</a>
-            </li>
-            <li>
-                <a href="{{ route('brand.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i>color</a>
-            </li>
-            <li>
-                <a href="{{ route('brand.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i>Size</a>
-            </li>
-            <li>
-                <a href="{{ route('brand.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i>Unit</a>
+                <a href="{{ route('status.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i>Status</a>
             </li>
         </ul>
     </li>
@@ -95,7 +87,7 @@
 
         <li>
             <a href="{{ route('logout') }}"
-                onclick="event.preventDefault();  confirm('sotti?? logout korben???!!!') && document.getElementById('logout-form').submit();">
+                onclick="event.preventDefault();  confirm('Sure! You want to Logout!!') && document.getElementById('logout-form').submit();">
                 <div class="parent-icon">
                     <i class="fa fa-sign-out"></i>
                 </div>

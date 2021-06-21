@@ -39,6 +39,8 @@ $(function(){
                 Toaster('success', 'data updated successfully.');
                 $(this).trigger('reset');
                 $('.preloader').hide();
+                console.log(formData);
+
             },
             error:(err)=>{
                 let errors = err.responseJSON.errors;
@@ -46,6 +48,7 @@ $(function(){
                     if (Object.hasOwnProperty.call(errors, key)) {
                         const element = errors[key];
                         $(`.${key}`).text(element);
+                        console.log(formData);
                     }
                 }
                 Toaster('error','Check below for errors');
