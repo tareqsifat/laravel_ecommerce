@@ -59,6 +59,7 @@ $(function(){
             }
         }) 
     })
+    
     $('.update_form').on('submit', function(e){
         e.preventDefault();
         let formData = new FormData($(this)[0]);
@@ -88,14 +89,10 @@ $(function(){
         }) 
     })
     
-
-
     function Toaster(icon, message) {
         Toast.fire({
             icon: icon,
             title: message
         })
     }
-    
-
 }) 

@@ -1,11 +1,21 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\product;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
+use App\Models\MainCategory;
+use App\Models\size;
+use App\Models\status;
+use Attribute;
+use GrahamCampbell\ResultType\Success;
+use GuzzleHttp\Psr7\UploadedFile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
-class statusController extends Controller
+class StatusController extends Controller
 {
     /**
      * Display a listing of the resource.
