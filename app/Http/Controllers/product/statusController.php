@@ -24,7 +24,10 @@ class StatusController extends Controller
      */
     public function index()
     {
-        //
+        $main_categories = MainCategory::where('status',1)->get();
+
+        $status = status::where('status',1)->latest()->paginate(10);
+        return view('admin.Product.status.index',compact('status'));
     }
 
     /**
@@ -34,7 +37,7 @@ class StatusController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.Product.status.create');
     }
 
     /**
@@ -43,9 +46,21 @@ class StatusController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, status $status)
     {
-        //
+        // dd($request->all());
+        $this->validate($request,[
+            'name' =>['required']
+        ]);
+
+        $status = status::create($request->except('icon'));
+
+        $status->slug = Str::slug($status->name);
+        $status->creator = Auth::user()->id;
+        $status->save();
+
+        return 'success';
+
     }
 
     /**
@@ -56,7 +71,8 @@ class StatusController extends Controller
      */
     public function show($id)
     {
-        //
+        $status = status::find($id);
+        return view('admin.Product.status.view', compact('status'));
     }
 
     /**
@@ -65,9 +81,9 @@ class StatusController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(status $status)
     {
-        //
+        return view('admin.Product.status.edit', ['status' => $status]);
     }
 
     /**
@@ -77,9 +93,19 @@ class StatusController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,status $status)
     {
-        //
+        $this->validate($request,[
+            'name' => ['required']
+        ]);
+
+        $status->update($request->except('icon'));
+
+        $status->slug = Str::slug($status->name);
+        $status->creator = Auth::user()->id;
+        $status->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -88,8 +114,9 @@ class StatusController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(status $status)
     {
-        //
+        $status->delete();
+        return response('success');
     }
 }

@@ -36,7 +36,7 @@ $(function(){
             type:'POST',
             data:formData,  
             success:(res)=>{
-                Toaster('success', 'data updated successfully.');
+                Toaster('success', 'data inserted successfully.');
                 $(this).trigger('reset');
                 $('.preloader').hide();
                 console.log(formData);

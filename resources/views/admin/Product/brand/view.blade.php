@@ -8,44 +8,39 @@
     </style>
     <div class="content-wrapper">
         <div class="container-fluid">
-            @include('admin.includes.brade_cumb',['title'=>'Brand Detail'])
+            @include('admin.includes.brade_cumb',['title'=>'Size'])
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <div class="card-title">Brand Details</div>
+                            <div class="card-title">Size Details</div>
                             <table class="table table-bordered table-hover table-striped">
                                 <tr>
                                     <td style="width: 40%">Id</td>
                                     <td>:</td>
-                                    <td>{{ $brand->id }}</td>
+                                    <td>{{ $size->id }}</td>
                                 </tr>
                                 <tr>
                                     <td style="width: 40%">Name</td>
                                     <td>:</td>
-                                    <td>{{ $brand->name }}</td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 40%">Logo</td>
-                                    <td>:</td>
-                                    <td><img src="/{{ $brand->logo }}" alt="" style="height: 50px"></td>
+                                    <td>{{ $size->name }}</td>
                                 </tr>
                                 <tr>
                                     <td style="width: 40%">Creator</td>
                                     <td>:</td>
-                                    <td>{{ $brand->creator }}</td>
+                                    <td>{{ $size->creator }}</td>
                                 </tr>
                                 <tr>
                                     <td style="width: 40%">Created at</td>
                                     <td>:</td>
                                     <td>
-                                        {{ $brand->created_at }}
+                                        {{ $size->created_at }}
                                         
                                     </td>
                                     <tr>
                                         <td style="width: 40%">Status</td>
                                         <td>:</td>
-                                        <td>{{ $brand->status }}</td>
+                                        <td>{{ $size->status }}</td>
                                     </tr>
                                 </tr>
                                 <tr>
@@ -56,7 +51,7 @@
                                 <div>
                                 </div>
                                 <div>
-                                    <a href="{{ route('brand.index') }}" 
+                                    <a href="{{ route('size.index') }}" 
                                     class="btn btn-warning">
                                     <i class="fa fa-check"></i>
                                     <span>Ok</span>

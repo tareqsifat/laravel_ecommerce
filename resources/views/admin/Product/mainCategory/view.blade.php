@@ -8,44 +8,39 @@
     </style>
     <div class="content-wrapper">
         <div class="container-fluid">
-            @include('admin.includes.brade_cumb',['title'=>'Brand Detail'])
+            @include('admin.includes.brade_cumb',['title'=>'Main Category'])
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-                            <div class="card-title">Brand Details</div>
+                            <div class="card-title">Main Category Details</div>
                             <table class="table table-bordered table-hover table-striped">
                                 <tr>
                                     <td style="width: 40%">Id</td>
                                     <td>:</td>
-                                    <td>{{ $brand->id }}</td>
+                                    <td>{{ $mainCategory->id }}</td>
                                 </tr>
                                 <tr>
                                     <td style="width: 40%">Name</td>
                                     <td>:</td>
-                                    <td>{{ $brand->name }}</td>
-                                </tr>
-                                <tr>
-                                    <td style="width: 40%">Logo</td>
-                                    <td>:</td>
-                                    <td><img src="/{{ $brand->logo }}" alt="" style="height: 50px"></td>
+                                    <td>{{ $mainCategory->name }}</td>
                                 </tr>
                                 <tr>
                                     <td style="width: 40%">Creator</td>
                                     <td>:</td>
-                                    <td>{{ $brand->creator }}</td>
+                                    <td>{{ $mainCategory->creator }}</td>
                                 </tr>
                                 <tr>
                                     <td style="width: 40%">Created at</td>
                                     <td>:</td>
                                     <td>
-                                        {{ $brand->created_at }}
+                                        {{ $mainCategory->created_at }}
                                         
                                     </td>
                                     <tr>
                                         <td style="width: 40%">Status</td>
                                         <td>:</td>
-                                        <td>{{ $brand->status }}</td>
+                                        <td>{{ $mainCategory->status }}</td>
                                     </tr>
                                 </tr>
                                 <tr>
@@ -56,7 +51,7 @@
                                 <div>
                                 </div>
                                 <div>
-                                    <a href="{{ route('brand.index') }}" 
+                                    <a href="{{ route('main_category.index') }}" 
                                     class="btn btn-warning">
                                     <i class="fa fa-check"></i>
                                     <span>Ok</span>

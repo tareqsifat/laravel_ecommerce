@@ -93,9 +93,20 @@ class sizeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, size $size)
     {
-        
+        $this->validate($request,[
+            'name' => ['required']
+        ]);
+
+        $size->update($request->except('icon'));
+
+        $size->slug = str::slug($size->name);
+        $size->creator = Auth::user()->id;
+        $size-> save();
+
+        // return 'success';
+        return redirect()->back();
     }
 
     /**
