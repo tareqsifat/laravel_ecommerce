@@ -22,7 +22,7 @@ class CreateCountriesTable extends Migration
             $table-> string('curreny', '100')-> nullable();
             $table-> string('creator', '100')-> nullable();
             $table-> string('slag', '100')-> nullable();
-            $table-> integer('status', '100')-> nullable()->default(1);
+            $table-> integer('status')-> nullable()->default(1);
             $table->timestamps();
         });
     }

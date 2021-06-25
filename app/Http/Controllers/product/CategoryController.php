@@ -3,7 +3,12 @@
 namespace App\Http\Controllers\product;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\MainCategory;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -14,7 +19,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $main_category = MainCategory::where('status',1)->latest()->get();
+        $category = Category::where('status',1)->latest()->paginate();
+        return view('admin.Product.Category.index',compact('category','main_category' ));
     }
 
     /**
@@ -24,7 +31,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $main_category = MainCategory::where('status',1)->latest()->get();
+        return view('admin.Product.Category.create',compact('main_category'));
     }
 
     /**
@@ -35,7 +43,22 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name' => ['required'],
+            'main_category_id'=>['required'],
+            'icon' => ['required']
+        ]);
+
+        $category = Category::create($request->except('icon'));
+
+        if ($request->hasFile('icon')) {
+            $category->icon = Storage::put('uploads/category', $request->file('icon'));
+            $category->save();
+        }
+
+        $category->creator = Auth::user()->id;
+        $category->slug = Str::slug($category->name);
+        $category->save();
     }
 
     /**
@@ -55,9 +78,11 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Category $category)
     {
-        //
+        return view('admin.Product.Category.edit',[
+            'category'=> $category
+        ]);
     }
 
     /**
@@ -69,7 +94,7 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**

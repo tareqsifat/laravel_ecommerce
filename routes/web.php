@@ -47,6 +47,7 @@ Route::get('/admin','AdminController@index')->name('admin_index') ->middleware('
 Route::group( [
     'prefix'=>'user',
     'middleware'=>['auth', 'check_user_is_active' ,'super_admin'],
+    // 'middleware'=>['auth'],
     'namespace' => 'Admin' 
 
 ],
@@ -112,7 +113,11 @@ Route::group( [
     // basic page  
     Route::get('/index','ProductController@index')->name('admin_product_index');
     Route::get('/create','ProductController@create')->name('admin_product_create');
+    Route::get('/store','ProductController@store')->name('admin_product_store');
     Route::get('/show','ProductController@show')->name('admin_product_view');
+    Route::get('/edit','ProductController@show')->name('admin_product_edit');
+    Route::get('/update','ProductController@update')->name('admin_product_update');
+    Route::get('/destroy','ProductController@destroy')->name('admin_product_destroy');
 
     Route::resource('brand', 'BrandController');
     Route::resource('main_category', 'MainCategoryController');

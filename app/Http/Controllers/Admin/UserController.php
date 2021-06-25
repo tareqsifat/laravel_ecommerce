@@ -97,7 +97,7 @@ class UserController extends Controller
         }
 
         if($user->username !=  $request->username){
-            $this-> validate($request, [
+            $this->validate($request, [
                 'email' => ['required', 'unique:users']
             ]);
             $user -> username = $request -> username;

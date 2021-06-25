@@ -11,7 +11,7 @@
                         <div class="card-body">
                             <div class="card-title">Add Product</div>
                             <hr />
-                            <form class="insert_form row" method="POST" action="{{route('product.store')}}" enctype="multipart/form-data">
+                            <form class="insert_form row" method="POST" action="{{route('admin_product_create')}}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="preloader"></div>
                                 <div class="form-group col-md-6 col-xl-4">

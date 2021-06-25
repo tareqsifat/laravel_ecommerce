@@ -42,6 +42,8 @@
             <li>
                 <a href="{{ route('main_category.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i>Main Category</a>
             </li>
+            <li>
+                <a href="{{ route('category.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i>Category</a>
             </li>
             <li>
                 <a href="{{ route('size.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i>Size</a>
@@ -52,7 +54,7 @@
         </ul>
     </li>
     
-    @if (Auth::check() && Auth::user()->role_id ==1)
+    @if (Auth::check() && Auth::user()->role_id ==1) 
         <li>
             <a class="has-arrow" href="javascript:void();">
                 <div class="parent-icon"><i class="zmdi zmdi-view-dashboard"></i></div>

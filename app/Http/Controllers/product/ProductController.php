@@ -3,6 +3,15 @@
 namespace App\Http\Controllers\product;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
+use App\Models\Category;
+use App\Models\Color;
+use App\Models\MainCategory;
+use App\Models\Publication;
+use App\Models\size;
+use App\Models\SubCategory;
+use App\Models\unit;
+use App\Models\Writer;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -24,7 +33,23 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.Product.create');
+        $brands = Brand::where('status',1)->get();
+        $colors = Color::where('status',1)->get();
+        $sizes = size::where('status',1)->get();
+        $units = unit::where('status',1)->get();
+        $writers = Writer::where('status',1)->get();
+        $publications = Publication::where('status',1)->get();
+
+        $maincategories = MainCategory::where('status',1)->get();
+        $categories = Category::where('status',1)
+                            ->where('main_category_id', MainCategory::where('status',1)->latest()->first()->id)->latest()->get();
+        $sub_categories = SubCategory::where('status',1)
+                            ->where('main_category_id', MainCategory::where('status',1)->latest()->first()->id)
+                            ->whare('category_id', Category::where('status',1)
+                            ->where('main_category_id', MainCategory::where('status',1)->latest()->first()->id)
+                            ->latest()->first()->id)->latest()->get();
+        return view('admin.Product.create', compact('brands','colors','sizes','units','writers',
+                                                    'publications','maincategories','categories','sub_categ'));
     }
 
     /**

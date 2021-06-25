@@ -44,17 +44,20 @@ class LoginController extends Controller
 
     protected function attemptLogin(Request $request)
     {
-            $this->guard()->attempt(
-            $this->credentials($request), $request->filled('remember'));
 
-            if(User::where('email', $request->email)->exists()){
-                Auth::logout();
-                return redirect('/login')->withErrors('email','your account is blocked');
-            }
-            if(Auth::user()->status == 0){
-                Auth::logout();
-                return redirect('/login')->withErrors('email','your account is blocked');
-            }
-        return redirect('/login');
+        $this->guard()->attempt(
+            $this->credentials($request), $request->filled('remember')
+        );
+        // dd($request->all());
+        if(!User::where('email',$request->email)->exists()){
+            Auth::logout();
+            return redirect()->back()->with('error','your accont is blocked');;
+        }
+        if(Auth::check() && Auth::user()->status == 0){
+            Auth::logout();
+            return redirect()->back()->with('error','your accont is blocked');;
+        }
+        return '/admin';
+
     }
 }
