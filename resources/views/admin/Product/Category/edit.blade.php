@@ -6,7 +6,7 @@
         <div class="container-fluid">
             @include('admin.includes.brade_cumb',['title'=>'Edit'])
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-10">
                     <div class="card">
                         <div class="card-body">
                             <div class="card-heder d-flex justify-content-between">
@@ -24,20 +24,17 @@
                                         {{-- <input type="text" name="name" class="form-control" id="input-21" placeholder="Name" /> --}}
                                         <select name="main_category_id" class="form-control" id="">
                                             <option value="">Select</option>
+                                            @foreach ($main_category as $item)
+                                                <option {{ $category->main_category_id == $item->id ? 'selected' :''}} value="{{ $item->id }}">{{ $item->name }}</option>
+                                            @endforeach
                                         </select>
-                                        <span class="text-danger main_category_id"></span>
+                                        <span class="text-danger category_id"></span>
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="input-21" class="col-sm-2 col-form-label">Name</label>
                                     <div class="col-sm-10">
-                                        <select name="main_category_id" class="form-control" id="">
-                                            <option value="">select</option>
-                                            @foreach ($category as $item)
-                                                <option value="{{ $ }}"></option>
-                                            @endforeach
-                                        </select>
-                                        <span class="text-danger name"></span>
+                                        <input type="text" name="name" class="form-control" id="input-21" value="{{ $category->name }}"/>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -48,7 +45,6 @@
                                         <span class="text-danger icon"></span>
                                     </div>
                                 </div>
-
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label"></label>
                                     <div class="col-sm-10">
@@ -58,7 +54,6 @@
                             </form>
                         </div>
                     </div>
-
                 </div>
             </div>
             <!--start overlay-->

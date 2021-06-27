@@ -69,7 +69,7 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -80,9 +80,8 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('admin.Product.Category.edit',[
-            'category'=> $category
-        ]);
+        $main_category = MainCategory::where('status',1)->latest()->get();
+        return view('admin.Product.Category.edit',compact('category','main_category'));
     }
 
     /**
@@ -92,9 +91,23 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Category $category)
     {
-        
+        $this->validate($request, [
+            'name' => ['required']
+        ]);
+
+        $category->update($request->except('icon'));
+        if($request->hasFile('icon')){
+            $category->icon = Storage::put('uploads/maincategory', $request->file('icon'));
+            $category->save();
+        }
+
+        $category->slug = Str::slug($category->name);
+        $category->creator = Auth::user()->id;
+        $category->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -103,8 +116,9 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return response('success');
     }
 }
