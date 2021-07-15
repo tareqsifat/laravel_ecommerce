@@ -46,6 +46,9 @@
                 <a href="{{ route('category.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i>Category</a>
             </li>
             <li>
+                <a href="{{ route('sub_Category.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i>Sub  Category</a>
+            </li>
+            <li>
                 <a href="{{ route('size.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i>Size</a>
             </li>
             <li>

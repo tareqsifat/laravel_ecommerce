@@ -127,8 +127,9 @@ Route::group( [
     Route::resource('size', 'SizeController');
     Route::resource('unit', 'UnitController');
     Route::resource('status', 'StatusController');
+    
+    Route::get('/get-all-category-selected-by-main-category/{main_category_id}','CategoryController@get_all_category_by_main_category')
+    ->name('get_all_category_selected_by_main_category');
+
+
 });
-
-
-
- 

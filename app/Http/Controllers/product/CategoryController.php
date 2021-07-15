@@ -19,9 +19,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $main_category = MainCategory::where('status',1)->latest()->get();
         $category = Category::where('status',1)->latest()->paginate();
-        return view('admin.Product.Category.index',compact('category','main_category' ));
+        return view('admin.Product.Category.index',compact('category'));
     }
 
     /**
@@ -59,6 +58,7 @@ class CategoryController extends Controller
         $category->creator = Auth::user()->id;
         $category->slug = Str::slug($category->name);
         $category->save();
+        return 'success';
     }
 
     /**
@@ -120,5 +120,17 @@ class CategoryController extends Controller
     {
         $category->delete();
         return response('success');
+    }
+
+    public function get_all_category_by_main_category($main_category_id)
+    {
+        $categories = Category::where('main_category_id', $main_category_id)->get();
+        $option = "";  
+        foreach ($categories as $key => $value) {
+            $id = $value->id;
+            $name = $value->name;
+            $option.="<option value='$id'>$name</option>";
+        }
+        return $option;  
     }
 }

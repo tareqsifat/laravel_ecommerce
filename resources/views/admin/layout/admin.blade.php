@@ -325,8 +325,6 @@
 
 
 
-     @stack('cjs')
-
 
  
      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -346,6 +344,6 @@
      <!-- Custom scripts -->
      <script src="{{ asset('contents/admin') }}/js/app-script.js"></script>
  
-     <!-- Mirrored from codervent.com/dashtremev3/pages-blank-page.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2020 09:42:04 GMT -->
+     @stack('cjss')
  </html>
  
