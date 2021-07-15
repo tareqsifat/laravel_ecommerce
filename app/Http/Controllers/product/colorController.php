@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\product;
 
 use App\Http\Controllers\Controller;
+use App\Models\Color;
+use App\Models\MainCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class colorController extends Controller
 {
@@ -14,7 +18,10 @@ class colorController extends Controller
      */
     public function index()
     {
-        //
+        $main_categories = MainCategory::where('status',1)->get();
+
+        $color = Color::where('status',1)->latest()->paginate(10);
+        return view('admin.Product.color.index',compact('color'));
     }
 
     /**
@@ -24,7 +31,7 @@ class colorController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.Product.color.create');
     }
 
     /**
@@ -35,7 +42,17 @@ class colorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name'=>['required']
+        ]);
+
+        $color = Color::create($request->all());
+
+        $color->Slug = Str::slug($color->name);
+        $color->creator = Auth::user()->id;
+        $color->save();
+
+        return 'success';
     }
 
     /**
@@ -46,7 +63,8 @@ class colorController extends Controller
      */
     public function show($id)
     {
-        //
+        $color = Color::find($id);
+        return view('admin.Product.color.view',compact('color'));
     }
 
     /**
@@ -55,9 +73,9 @@ class colorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Color $color)
     {
-        //
+        return view('admin.Product.color.edit',['color' => $color]);
     }
 
     /**
@@ -67,9 +85,19 @@ class colorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Color $color)
     {
-        //
+        $this->validate($request,[
+            'name' =>['required']
+        ]);
+
+        $color->update($request->except('icon'));
+
+        $color->slug = Str::slug($color->name);
+        $color->creator = Auth::user()->id;
+        $color->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -78,8 +106,9 @@ class colorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Color $color)
     {
-        //
+        $color->delete();
+        return response('success');
     }
 }
