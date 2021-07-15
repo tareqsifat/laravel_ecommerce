@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\product;
 
 use App\Http\Controllers\Controller;
+use App\Models\MainCategory;
+use App\Models\unit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class unitController extends Controller
 {
@@ -14,7 +18,8 @@ class unitController extends Controller
      */
     public function index()
     {
-        //
+        $unit = unit::where('status',1)->latest()->paginate(10);
+        return view('admin.Product.unit.index',compact('unit'));
     }
 
     /**
@@ -24,7 +29,7 @@ class unitController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.Product.unit.create');
     }
 
     /**
@@ -35,7 +40,17 @@ class unitController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'name' =>'required'
+        ]);
+
+        $unit = unit::create($request->all());
+
+        $unit->slug = Str::slug($unit->name);
+        $unit->creator = Auth::user()->id;
+        $unit->save();
+
+        return 'success';
     }
 
     /**
@@ -46,7 +61,7 @@ class unitController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -55,9 +70,9 @@ class unitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(unit $unit)
     {
-        //
+        return view('admin.Product.unit.edit',['unit'=> $unit]);
     }
 
     /**
@@ -67,9 +82,19 @@ class unitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, unit $unit)
     {
-        //
+        $this->validate($request,[
+            'name' => 'required'
+        ]);
+
+        $unit->update($request->all());
+
+        $unit->slug = Str::slug($unit->name);
+        $unit->creator = Auth::user()->id;
+        $unit->save();
+
+        return redirect()->back();
     }
 
     /**
@@ -80,6 +105,8 @@ class unitController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $unit = unit::find($id);
+        $unit->delete();
+        return response('success');
     }
 }

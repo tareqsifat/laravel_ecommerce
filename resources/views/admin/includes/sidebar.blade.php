@@ -55,6 +55,9 @@
                 <a href="{{ route('size.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i>Size</a>
             </li>
             <li>
+                <a href="{{ route('unit.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i>unit</a>
+            </li>
+            <li>
                 <a href="{{ route('status.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i>Status</a>
             </li>
         </ul>

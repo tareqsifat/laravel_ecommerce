@@ -18,8 +18,6 @@ class colorController extends Controller
      */
     public function index()
     {
-        $main_categories = MainCategory::where('status',1)->get();
-
         $color = Color::where('status',1)->latest()->paginate(10);
         return view('admin.Product.color.index',compact('color'));
     }
