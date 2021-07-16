@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class MainCategory extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'name','icon'
-    ]; 
+    // protected $fillable = [
+    //     'name','icon'
+    // ]; 
+
+    protected $guarded = [];
 }

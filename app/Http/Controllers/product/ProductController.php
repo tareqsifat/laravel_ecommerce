@@ -45,11 +45,11 @@ class ProductController extends Controller
                             ->where('main_category_id', MainCategory::where('status',1)->latest()->first()->id)->latest()->get();
         $sub_categories = SubCategory::where('status',1)
                             ->where('main_category_id', MainCategory::where('status',1)->latest()->first()->id)
-                            ->whare('category_id', Category::where('status',1)
+                            ->where('category_id', Category::where('status',1)
                             ->where('main_category_id', MainCategory::where('status',1)->latest()->first()->id)
                             ->latest()->first()->id)->latest()->get();
         return view('admin.Product.create', compact('brands','colors','sizes','units','writers',
-                                                    'publications','maincategories','categories','sub_categ'));
+                                                    'publications','maincategories','categories','sub_categories'));
     }
 
     /**
