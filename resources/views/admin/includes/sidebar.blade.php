@@ -34,7 +34,7 @@
         </a>
         <ul class="">
             <li>
-                <a href="{{ route('admin_product_create') }}"><i class="zmdi zmdi-dot-circle-alt"></i>Add Product</a>
+                <a href="{{ route('product.create') }}"><i class="zmdi zmdi-dot-circle-alt"></i>Add Product</a>
             </li>
             <li>
                 <a href="{{ route('brand.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i>Brand</a>
@@ -56,6 +56,12 @@
             </li>
             <li>
                 <a href="{{ route('unit.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i>unit</a>
+            </li>
+            <li>
+                <a href="{{ route('publication.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i>Publication</a>
+            </li>
+            <li>
+                <a href="{{ route('writer.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i>Writer</a>
             </li>
             <li>
                 <a href="{{ route('status.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i>Status</a>

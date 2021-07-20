@@ -111,13 +111,13 @@ Route::group( [
 ], function(){ 
 
     // basic page  
-    Route::get('/index','ProductController@index')->name('admin_product_index');
-    Route::get('/create','ProductController@create')->name('admin_product_create');
-    Route::get('/store','ProductController@store')->name('admin_product_store');
-    Route::get('/show','ProductController@show')->name('admin_product_view');
-    Route::get('/edit','ProductController@show')->name('admin_product_edit');
-    Route::get('/update','ProductController@update')->name('admin_product_update');
-    Route::get('/destroy','ProductController@destroy')->name('admin_product_destroy');
+    // Route::get('/index','ProductController@index')->name('admin_product_index');
+    // Route::get('/create','ProductController@create')->name('admin_product_create');
+    // Route::get('/store','ProductController@store')->name('admin_product_store');
+    // Route::get('/show','ProductController@show')->name('admin_product_view');
+    // Route::get('/edit','ProductController@show')->name('admin_product_edit');
+    // Route::get('/update','ProductController@update')->name('admin_product_update');
+    // Route::get('/destroy','ProductController@destroy')->name('admin_product_destroy');
 
     Route::resource('brand', 'BrandController');
     Route::resource('main_category', 'MainCategoryController');
@@ -127,6 +127,9 @@ Route::group( [
     Route::resource('size', 'SizeController');
     Route::resource('unit', 'UnitController');
     Route::resource('status', 'StatusController');
+    Route::resource('product', 'ProductController');
+    Route::resource('publication', 'PublicationController');
+    Route::resource('writer', 'WriterController');
     
     Route::get('/get-all-category-selected-by-main-category/{main_category_id}','CategoryController@get_all_category_by_main_category')
     ->name('get_all_category_selected_by_main_category');

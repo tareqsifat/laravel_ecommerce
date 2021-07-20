@@ -25,6 +25,7 @@
         <link href=" {{ asset('contents/admin') }}/css/icons.css" rel="stylesheet" type="text/css" />
         <!-- Metismenu CSS-->
         <link href=" {{ asset('contents/admin') }}/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
+        @stack('ccss')
         <!-- Custom Style-->
         <link href=" {{ asset('contents/admin') }}/css/app-style.css" rel="stylesheet" />
         {{-- custom js --}}
@@ -44,7 +45,7 @@
                 processData:false,
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
+                }
             });
         </script>
     </head>
@@ -344,6 +345,6 @@
      <!-- Custom scripts -->
      <script src="{{ asset('contents/admin') }}/js/app-script.js"></script>
  
-     @stack('cjss')
+     @stack('cjs')
  </html>
  

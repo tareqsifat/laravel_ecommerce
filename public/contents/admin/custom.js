@@ -40,7 +40,6 @@ $(function(){
                 $(this).trigger('reset');
                 $('.preloader').hide();
                 console.log(formData);
-
             },
             error:(err)=>{
                 let errors = err.responseJSON.errors;

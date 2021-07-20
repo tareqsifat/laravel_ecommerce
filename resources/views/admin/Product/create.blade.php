@@ -2,6 +2,7 @@
 
 @section('content')
 
+    
     <div class="content-wrapper">
         <div class="container-fluid">
             @include('admin.includes.brade_cumb',['title'=>'Product Create'])
@@ -11,14 +12,16 @@
                         <div class="card-body">
                             <div class="card-title">Add Product</div>
                             <hr />
-                            <form class="insert_form row" method="POST" action="{{route('admin_product_create')}}" enctype="multipart/form-data">
+                            <form class="insert_form row" method="POST" action="{{route('product.store')}}" enctype="multipart/form-data">
                                 @csrf
+
+
                                 <div class="preloader"></div>
                                 <div class="form-group col-md-6 col-xl-4">
                                     <label for="input-21" class=" col-form-label">Name</label>
                                     <div class="">
                                         <input type="text" name="name" class="form-control" id="input-21" placeholder="Name" />
-                                        <span class="text-danger name "></span>
+                                        <span class="text-danger name"></span>
                                     </div>
                                 </div>
 
@@ -28,7 +31,7 @@
                                         {{-- <input type="text" class="form-control" id="input-21" placeholder="Name" /> --}}
                                         <select name="brand" id="" class="form-control">
                                             @foreach ($brands as $key=>$item)
-                                                <option {{ $key==0?'selected':'' }} value="{{ $item->id }}">{{ $item->name }}</option>
+                                                <option {{ $key==0? 'selected': '' }} value="{{ $item->id }}">{{ $item->name }}</option>
                                             @endforeach
                                         </select>
                                         <span class="text-danger brand"></span>
@@ -241,8 +244,8 @@
     <!--End content-wrapper-->
 
     @push('ccss')
-        <link href="/contents/admin/plugins/select2/css/select2.min.css" rel="stylesheet" />
-        <link href="/contents/admin/plugins/select2/css/select2-bootstrap4.css" rel="stylesheet" />
+        <link href="{{ asset('contents/admin') }}/plugins/select2/css/select2.min.css" rel="stylesheet" />
+        <link href="{{ asset('contents/admin') }}/plugins/select2/css/select2-bootstrap4.css" rel="stylesheet" />
         <link rel="stylesheet" href="{{ asset('contents/admin') }}/plugins/summernote/dist/summernote-bs4.css" />
     @endpush
 
@@ -250,13 +253,15 @@
         <script src="/contents/admin/plugins/select2/js/select2.min.js"></script>
         <script src="{{ asset('contents/admin') }}/plugins/summernote/dist/summernote-bs4.min.js"></script>
         {{-- <script src='https://cdn.tiny.cloud/1/vdqx2klew412up5bcbpwivg1th6nrh3murc6maz8bukgos4v/tinymce/5/tinymce.min.js' referrerpolicy="origin"></script> --}}
+        {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
 
         <script>
-            $('.multiple-select').select2({
+            $(function() {
+                $('.multiple-select').select2({
                 // theme: 'bootstrap4',
                 // width: $(this).data('width') ? $(this).data('width') : $(this).hasClass('w-100') ? '100%' : 'style',
-                placeholder: $(this).data('placeholder'),
-                allowClear: Boolean($(this).data('allow-clear')),
+                // placeholder: $(this).data('placeholder'),
+                // allowClear: Boolean($(this).data('allow-clear')),
             });
             // tinymce.init({
             //     selector: '#mytextarea1'
@@ -272,6 +277,7 @@
                     height: 400,
                     tabsize: 2
                 });
+            });
         </script>
     @endpush
 

@@ -60,7 +60,25 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        return view('admin.Product.create');
+        $this->validate($request, [
+            'name' => ['required'],
+            'brands' => ['required'],
+            'main_category_id' => ['required'],
+            'Category_id' => ['required'],
+            'Sub_category_id' => ['required'],
+            'color_id' => ['required'],
+            'size_id' => ['required'],
+            'unit_id' => ['required'],
+            'price' => ['required'],
+            'discount' => ['required'],
+            'expiration_date' => ['required'],
+            'stock' => ['required'],
+            'alart_quantity' => ['required'],
+            'discription' => ['required'],
+            'thumb_image' => ['required'],
+            'related_images' => ['required'],
+            'status' => ['required'],
+        ]);
     }
 
     /**
