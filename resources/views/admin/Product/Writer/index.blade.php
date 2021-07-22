@@ -28,7 +28,7 @@
                                         @foreach ($writer as $key=>$item)
                                             <tr>
                                                 <td scope="row">{{ $key+1 }}</td>
-                                                <td scope="row"><img src="/{{ $item->logo }}" alt="" height="50px"></td>
+                                                <td scope="row"><img src="/{{ $item->image }}" alt="" height="50px"></td>
                                                 <td scope="row">{{ $item->name }}</td>
                                                 <td scope="row"></td>
                                                 <td scope="row">

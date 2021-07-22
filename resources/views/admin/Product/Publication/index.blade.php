@@ -28,16 +28,11 @@
                                         @foreach ($publication as $key=>$item)
                                             <tr>
                                                 <td scope="row">{{ $key+1 }}</td>
-                                                <td scope="row"><img src="/{{ $item->logo }}" alt="" height="50px"></td>
+                                                <td scope="row"><img src="/{{ $item->image }}" alt="" height="50px"></td>
                                                 <td scope="row">{{ $item->name }}</td>
                                                 <td scope="row"></td>
                                                 <td scope="row">
                                                     <div class="text-right">
-                                                        <a type="button" href="{{ route('publication.show', $item->id)}}" 
-                                                            class="btn btn-light waves-effect waves-light m-1">
-                                                            <i class="fa fa-eye"></i> 
-                                                            <span>view</span>
-                                                        </a>
                                                         <a type="button" href="{{ route('publication.edit',$item->id) }}" 
                                                             class="btn btn-warning waves-effect waves-light m-1">
                                                             <i class="fa fa-pencil"></i> 

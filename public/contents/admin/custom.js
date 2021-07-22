@@ -38,6 +38,7 @@ $(function(){
             success:(res)=>{
                 Toaster('success', 'data inserted successfully.');
                 $(this).trigger('reset');
+                $('.note-editable p').html('');
                 $('.preloader').hide();
                 console.log(formData);
             },

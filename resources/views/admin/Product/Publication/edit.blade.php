@@ -6,7 +6,7 @@
         <div class="container-fluid">
             @include('admin.includes.brade_cumb',['title'=>'Edit'])
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-8">
                     <div class="card">
                         <div class="card-body">
                             <div class="card-heder d-flex justify-content-between">
@@ -29,16 +29,16 @@
                                 <div class="form-group row">
                                     <label for="input-21" class="col-sm-2 col-form-label">Description</label>
                                     <div class="col-sm-10">
-                                        <textarea name="description" class="form-control" id="mytextarea1" cols="30" rows="10"></textarea>
+                                        <textarea name="description" class="form-control" id="mytextarea1" cols="30" rows="10">{{ $publication->description }}</textarea>
                                         <span class="text-danger description"></span>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="input-21" class="col-sm-2 col-form-label">Images</label>
+                                    <label for="input-21" class="col-sm-2 col-form-label">Image</label>
                                     <div class="col-sm-10">
-                                        <input type="file" name="images" class="form-control" id="input-21"/>
-                                        <img src="/{{ $publication->logo }}" style="height: 40px" alt="">
+                                        <input type="file" name="image" class="form-control" id="input-21"/>
+                                        <img src="/{{ $publication->image }}" style="height: 40px" alt="">
                                         <span class="text-danger images"></span>
                                     </div>
                                 </div>
@@ -74,7 +74,6 @@
                     height: 400,
                     tabsize: 2
                 });
-            });
         </script>
     @endpush
 

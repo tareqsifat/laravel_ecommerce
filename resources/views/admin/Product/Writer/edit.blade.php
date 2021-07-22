@@ -6,7 +6,7 @@
         <div class="container-fluid">
             @include('admin.includes.brade_cumb',['title'=>'Edit'])
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-8">
                     <div class="card">
                         <div class="card-body">
                             <div class="card-heder d-flex justify-content-between">
@@ -29,17 +29,17 @@
                                 <div class="form-group row">
                                     <label for="input-21" class="col-sm-2 col-form-label">Description</label>
                                     <div class="col-sm-10">
-                                        <textarea name="description" class="form-control" id="mytextarea1" cols="30" rows="10"></textarea>
+                                        <textarea name="description" class="form-control" id="mytextarea1" cols="30" rows="10">{{ $writer->description }}</textarea>
                                         <span class="text-danger description"></span>
                                     </div>
                                 </div>
                                 
                                 <div class="form-group row">
-                                    <label for="input-21" class="col-sm-2 col-form-label">Icon</label>
+                                    <label for="input-21" class="col-sm-2 col-form-label">Image</label>
                                     <div class="col-sm-10">
-                                        <input type="file" name="icon" class="form-control" id="input-21"/>
-                                        <img src="/{{ $writer->logo }}" style="height: 40px" alt="">
-                                        <span class="text-danger icon"></span>
+                                        <input type="file" name="image" class="form-control" id="input-21"/>
+                                        <img src="/{{ $writer->image }}" style="height: 40px" alt="">
+                                        <span class="text-danger image"></span>
                                     </div>
                                 </div>
 
@@ -75,7 +75,7 @@
                     height: 400,
                     tabsize: 2
                 });
-            });
+
         </script>
     @endpush
 

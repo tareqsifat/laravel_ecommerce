@@ -71,7 +71,6 @@
                     height: 400,
                     tabsize: 2
                 });
-            });
         </script>
     @endpush
 

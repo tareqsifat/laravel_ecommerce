@@ -43,13 +43,13 @@ class publicationController extends Controller
         $this->validate($request,[
             'name' => ['required'],
             'description' => ['required'],
-            'images' => ['required']
+            'image' => ['required']
         ]);
         
-        $publication = Publication::create($request->except('images'));
+        $publication = Publication::create($request->except('image'));
 
-        if ($request->hasFile('images')) {
-            $publication->image = Storage::put('uploads/publication', $request->file('images'));
+        if ($request->hasFile('image')) {
+            $publication->image = Storage::put('uploads/publication', $request->file('image'));
             $publication->save();
         }
 
@@ -98,9 +98,9 @@ class publicationController extends Controller
             'description' => ['required']
         ]);
 
-        $publication->update($request->except('images'));
-        if($request->hasFile('images')){
-            $publication->image = Storage::put('uploads/Publication', $request->file('images'));
+        $publication->update($request->except('image'));
+        if($request->hasFile('image')){
+            $publication->image = Storage::put('uploads/Publication', $request->file('image'));
             $publication->save();
         }
 

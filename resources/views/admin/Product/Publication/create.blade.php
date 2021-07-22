@@ -33,10 +33,10 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="input-21" class="col-sm-2 col-form-label">images</label>
+                                    <label for="input-21" class="col-sm-2 col-form-label">image</label>
                                     <div class="col-sm-10">
-                                        <input type="file" name="images" class="form-control" id="input-21"/>
-                                        <span class="text-danger images"></span>
+                                        <input type="file" name="image" class="form-control" id="input-21"/>
+                                        <span class="text-danger image"></span>
                                     </div>
                                 </div>
 
@@ -71,7 +71,6 @@
                     height: 400,
                     tabsize: 2
                 });
-            });
         </script>
     @endpush
 
