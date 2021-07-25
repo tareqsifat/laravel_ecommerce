@@ -1,5 +1,5 @@
 <div class="header-top-right">
-    <p class="pull-left h2-color mtb-10 d-none d-md-block">Wellcome to Oneclick store!</p>
+    <p class="pull-left h2-color mtb-10 d-none d-md-block">Welcome to sifat's online shop!</p>
     <div class="account-menu text-right pull-right mt-10 home3-hover">
         <ul>
             <li><a href="account.html">My Account</a></li>
