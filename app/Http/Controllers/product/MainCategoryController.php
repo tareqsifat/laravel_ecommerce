@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\product;
-
+ 
 use App\Http\Controllers\Controller;
 use App\Models\MainCategory;
 use Illuminate\Http\Request;
@@ -122,5 +122,15 @@ class MainCategoryController extends Controller
     {
         $main_category ->delete();
         return response('success');
+    }
+    
+    public function get_main_category_json()
+    {
+        $collection = MainCategory::where('status',1)->latest()->get();
+        $option = '';
+        foreach ($collection as $key => $value) {
+            $option .= "<option ".($key== 0?' selected':'')." value ='".$value->id."'>".$value->name."</option>";
+        }
+        return $option;
     }
 }

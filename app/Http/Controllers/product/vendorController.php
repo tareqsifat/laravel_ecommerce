@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\product;
 
 use App\Http\Controllers\Controller;
-use App\Models\MainCategory;
-use App\Models\unit;
+use App\Models\vendor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
-class unitController extends Controller
+class vendorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +18,8 @@ class unitController extends Controller
      */
     public function index()
     {
-        $unit = unit::where('status',1)->latest()->paginate(10);
-        return view('admin.Product.unit.index',compact('unit'));
+        $vendor = vendor::latest()->paginate(10);
+        return view('admin.Product.vendor.index',compact('vendor'));
     }
 
     /**
@@ -29,7 +29,7 @@ class unitController extends Controller
      */
     public function create()
     {
-        return view('admin.Product.unit.create');
+        return view('admin.Product.vendor.create');
     }
 
     /**
@@ -41,18 +41,27 @@ class unitController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'name' =>'required'
+            'name' =>['required'],
+            'address' =>['required'],
+            'email' =>['required'],
+            'image' =>['required']
         ]);
 
-        $unit = unit::create($request->all());
+        $vendor = vendor::create($request->except('image'));
 
-        $unit->slug = Str::slug($unit->name);
-        $unit->creator = Auth::user()->id;
-        $unit->save();
+        if($request->hasFile('image')){
+            $vendor->image = Storage::put('uploads/vendors', $request->file('image'));
+            $vendor->save();
+        }
+
+        $vendor->slug =Str::slug($vendor->name);
+        $vendor->creator = Auth::user()->id;
+
+        $vendor-> save();
 
         return response()->json([
-            'html' => "<option value='".$unit->id."'>".$unit->name."</option>",
-            'value' => $unit->id,
+            'html' => "<option value='".$vendor->id."'>".$vendor->name."</option>",
+            'value' => $vendor->id,
         ]);
     }
 
@@ -64,7 +73,7 @@ class unitController extends Controller
      */
     public function show($id)
     {
-        
+        //
     }
 
     /**
@@ -73,9 +82,9 @@ class unitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(unit $unit)
+    public function edit(vendor $vendor)
     {
-        return view('admin.Product.unit.edit',['unit'=> $unit]);
+        return view('admin.Product.vendor.edit', ['vendor' => $vendor]);
     }
 
     /**
@@ -85,18 +94,23 @@ class unitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, unit $unit)
+    public function update(Request $request, vendor $vendor)
     {
         $this->validate($request,[
-            'name' => 'required'
+            'name' => ['required']
         ]);
 
-        $unit->update($request->all());
+        $vendor->update($request->except('icon'));
+        if($request->hasFile('icon')){
+            $vendor->icon = Storage::put('uploads/vendor', $request->file('icon'));
+            $vendor->save();
+        }
 
-        $unit->slug = Str::slug($unit->name);
-        $unit->creator = Auth::user()->id;
-        $unit->save();
+        $vendor->slug = str::slug($vendor->name);
+        $vendor->creator = Auth::user()->id;
+        $vendor-> save();
 
+        // return 'success';
         return redirect()->back();
     }
 
@@ -108,8 +122,8 @@ class unitController extends Controller
      */
     public function destroy($id)
     {
-        $unit = unit::find($id);
-        $unit->delete();
+        $vendor = vendor::find($id);
+        $vendor->delete();
         return response('success');
     }
 }

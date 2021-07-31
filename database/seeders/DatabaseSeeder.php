@@ -16,7 +16,6 @@ use App\Models\unit;
 use App\Models\vendor;
 use App\Models\Writer;
 use Carbon\Carbon;
-use Faker\Provider\Lorem;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -264,7 +263,7 @@ class DatabaseSeeder extends Seeder
         $data = [
             [
                 'name' => 'nike',
-                'data' => 'http://lorempixel.com/400/200/sports/Dummy-Text/',
+                'logo' => 'http://lorempixel.com/400/200/sports/Dummy-Text/',
                 'creator' => 1,
                 'slug' => 'nike',
                 'created_at' => Carbon::now()->toDateTimeString()
@@ -378,7 +377,7 @@ class DatabaseSeeder extends Seeder
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
         ];
-        Writer::inset($data);
+        Writer::insert($data);
 
         //publication
         $data = [
@@ -387,7 +386,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'http://lorempixel.com/200/200/business/1/',
                 'description' => str_shuffle('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris laoreet'),
                 'creator' => 1,
-                'slug' => Str::strtolower('GOODWORD'),
+                'slug' => Str::slug(strtolower('GOODWORD')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
         
@@ -396,7 +395,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'http://lorempixel.com/200/200/business/2/',
                 'description' => str_shuffle('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris laoreet'),
                 'creator' => 1,
-                'slug' => Str::strtolower('Onnesa prokashon'),
+                'slug' => Str::slug(strtolower('Onnesa prokashon')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
@@ -404,7 +403,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'http://lorempixel.com/200/200/business/3/',
                 'description' => str_shuffle('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris laoreet'),
                 'creator' => 1,
-                'slug' => Str::strtolower('Anowar Library'),
+                'slug' => Str::slug(strtolower('Anowar Library')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
@@ -412,7 +411,7 @@ class DatabaseSeeder extends Seeder
                 'image' => 'http://lorempixel.com/200/200/business/4/',
                 'description' => str_shuffle('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris laoreet'),
                 'creator' => 1,
-                'slug' => Str::strtolower('Art Publication'),
+                'slug' => Str::slug(strtolower('Art Publication')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
         ];
@@ -423,55 +422,55 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => strtolower('red'),
                 'creator' => 1,
-                'slug' => Str::strtolower('red'),
+                'slug' => Str::slug(strtolower('red')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
                 'name' => strtolower('sayan'),
                 'creator' => 1,
-                'slug' => Str::strtolower('sayan'),
+                'slug' => Str::slug(strtolower('sayan')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
                 'name' => strtolower('pink'),
                 'creator' => 1,
-                'slug' => Str::strtolower('pink'),
+                'slug' => Str::slug(strtolower('pink')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
                 'name' => strtolower('green'),
                 'creator' => 1,
-                'slug' => Str::strtolower('green'),
+                'slug' => Str::slug(strtolower('green')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
                 'name' => strtolower('slyblue'),
                 'creator' => 1,
-                'slug' => Str::strtolower('skyblue'),
+                'slug' => Str::slug(strtolower('slyblue')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
                 'name' => strtolower('gray'),
                 'creator' => 1,
-                'slug' => Str::strtolower('gray'),
+                'slug' => Str::slug(strtolower('gray')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
                 'name' => strtolower('white'),
                 'creator' => 1,
-                'slug' => Str::strtolower('white'),
+                'slug' => Str::slug(strtolower('white')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
                 'name' => strtolower('black'),
                 'creator' => 1,
-                'slug' => Str::strtolower('black'),
+                'slug' => Str::slug(strtolower('black')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
                 'name' => strtolower('yellow'),
                 'creator' => 1,
-                'slug' => Str::strtolower('yellow'),
+                'slug' => Str::slug(strtolower('yellow')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
         ];
@@ -482,43 +481,43 @@ class DatabaseSeeder extends Seeder
             [
                 'name' => strtolower('XS'),
                 'creator' => 1,
-                'slug' => Str::strtolower('XS'),
+                'slug' => Str::slug(strtolower('XS')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
                 'name' => strtolower('S'),
                 'creator' => 1,
-                'slug' => Str::strtolower('S'),
+                'slug' => Str::slug(strtolower('S')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
                 'name' => strtolower('M'),
                 'creator' => 1,
-                'slug' => Str::strtolower('M'),
+                'slug' => Str::slug(strtolower('M')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
                 'name' => strtolower('L'),
                 'creator' => 1,
-                'slug' => Str::strtolower('L'),
+                'slug' => Str::slug(strtolower('L')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
                 'name' => strtolower('XL'),
                 'creator' => 1,
-                'slug' => Str::strtolower('XL'),
+                'slug' => Str::slug(strtolower('XL')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
                 'name' => strtolower('XXL'),
                 'creator' => 1,
-                'slug' => Str::strtolower('XXL'),
+                'slug' => Str::slug(strtolower('XXL')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
                 'name' => strtolower('XXXL'),
                 'creator' => 1,
-                'slug' => Str::strtolower('XXXL'),
+                'slug' => Str::slug(strtolower('XXXL')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
         ];
@@ -578,49 +577,49 @@ class DatabaseSeeder extends Seeder
                 'name' => strtolower('Active'),
                 'creator' => 1,
                 'serial' => 1,
-                'slug' => Str::strtolower('Active'),
+                'slug' => Str::slug(strtolower('Active')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
                 'name' => strtolower('Pending'),
                 'serial' => 2,
                 'creator' => 1,
-                'slug' => Str::strtolower('Pending'),
+                'slug' => Str::slug(strtolower('Pending')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
                 'name' => strtolower('Processing'),
                 'serial' => 3,
                 'creator' => 1,
-                'slug' => Str::strtolower('Processing'),
+                'slug' => Str::slug(strtolower('Processing')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
                 'name' => strtolower('Shipping'),
                 'serial' => 4,
                 'creator' => 1,
-                'slug' => Str::strtolower('Shipping'),
+                'slug' => Str::slug(strtolower('Shipping')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
                 'name' => strtolower('delivered'),
                 'serial' => 5,
                 'creator' => 1,
-                'slug' => Str::strtolower('delivered'),
+                'slug' => Str::slug(strtolower('delivered')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
                 'name' => strtolower('Cancelled'),
                 'serial' => 6,
                 'creator' => 1,
-                'slug' => Str::strtolower('Cancelled'),
+                'slug' => Str::slug(strtolower('Cancelled')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
                 'name' => strtolower('Draft'),
                 'serial' => 7,
                 'creator' => 1,
-                'slug' => Str::strtolower('delivered'),
+                'slug' => Str::slug(strtolower('draft')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
         ];
@@ -634,7 +633,7 @@ class DatabaseSeeder extends Seeder
                 'email' => 'tutul@gmail.com',
                 'address' => 'jatrabari',
                 'creator' => 1,
-                'slug' => Str::strtolower('tutul'),
+                'slug' => Str::slug(strtolower('tutul')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
@@ -642,7 +641,7 @@ class DatabaseSeeder extends Seeder
                 'email' => 'yousuf@gmail.com',
                 'address' => 'dhanmondi',
                 'creator' => 1,
-                'slug' => Str::strtolower('yousuf'),
+                'slug' => Str::slug(strtolower('yousuf')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
             [
@@ -650,7 +649,7 @@ class DatabaseSeeder extends Seeder
                 'email' => 'sajid@gmail.com',
                 'address' => 'Chattagram',
                 'creator' => 1,
-                'slug' => Str::strtolower('sajid'),
+                'slug' => Str::slug(strtolower('sajid')),
                 'created_at' => Carbon::now()->toDateTimeString()
             ],
         ];
@@ -666,7 +665,7 @@ class DatabaseSeeder extends Seeder
         }
             
         //products
-        DB::table('main_category_products')->truncate();
+        DB::table('main_category_product')->truncate();
         DB::table('category_product')->truncate();
         DB::table('sub_category_product')->truncate();
         DB::table('color_product')->truncate();
@@ -709,11 +708,11 @@ class DatabaseSeeder extends Seeder
             $product->price = rand(200,800);
             $product->sku = 'SKU' . rand(200, 500);
             $product->stock = rand(700,1000);
-            $product->discount = rand(0,20);
+            $product->discount_price = rand(0,20);
             $product->expiration_date = Carbon::now()->year. '-31-12';
             $product->minimum_amount = rand(25,30);
-            $product->free_delivary = rand(0,1);
-            $product->totalview = rand(50, 100);
+            $product->free_delivery = rand(0,1);
+            $product->total_view = rand(50, 100);
             $product->description = 'Lorem ipsum dolor sit, amet consectetur adipisicing elit.';
             $product->features = "<ul><li>Lorem ipsum dolor sit amet</li><li>consectetur adipisicing elit.</li> <li>Aliquid vel quo facere suscipit consequatur</li><li>fugit dolore aspernatur</li></ul>";
             $product->thumb_image = 'dummy-products/' . rand(1,18) . ".jpg";
@@ -725,53 +724,70 @@ class DatabaseSeeder extends Seeder
             $product->slug = Str::slug($product->name) . '-' . Carbon::now()->year . Carbon::now()->month . $product->id;
             $product->save();
 
+            DB::table('main_category_product')->truncate();
             DB::table('main_category_product')->insert(
                 ['main_category_id' => 1, 'product_id'=> $product->id]
             );
 
+            DB::table('category_product')->truncate();
             DB::table('category_product')->insert(
                 ['category_id' => 1, 'product_id'=> $product->id],
                 ['category_id' => 2, 'product_id'=> $product->id],
                 ['category_id' => 3, 'product_id'=> $product->id]
             );
 
+            DB::table('sub_category_product')->truncate();
             DB::table('sub_category_product')->insert(
                 ['sub_category_id' => 1, 'product_id'=> $product->id],
                 ['sub_category_id' => 2, 'product_id'=> $product->id],
                 ['sub_category_id' => 3, 'product_id'=> $product->id]
             );
+
+            DB::table('color_product')->truncate();
             DB::table('color_product')->insert(
                 ['color_id' => 1, 'product_id'=> $product->id],
                 ['color_id' => 2, 'product_id'=> $product->id],
                 ['color_id' => 3, 'product_id'=> $product->id]
             );
+
+            DB::table('product_size')->truncate();
             DB::table('product_size')->insert(
                 ['size_id' => 1, 'product_id'=> $product->id],
                 ['size_id' => 2, 'product_id'=> $product->id],
                 ['size_id' => 3, 'product_id'=> $product->id]
             );
+
+            DB::table('unit_product')->truncate();
             DB::table('unit_product')->insert(
                 ['unit_id' => 1, 'product_id'=> $product->id],
                 ['unit_id' => 2, 'product_id'=> $product->id],
                 ['unit_id' => 3, 'product_id'=> $product->id]
             );
+
+            DB::table('product_vendor')->truncate();
             DB::table('product_vendor')->insert(
                 ['vendor_id' => 1, 'product_id'=> $product->id],
                 ['vendor_id' => 2, 'product_id'=> $product->id],
             );
+
+            DB::table('writer_product')->truncate();
             DB::table('writer_product')->insert(
                 ['writer_id' => 1, 'product_id'=> $product->id],
                 ['writer_id' => 2, 'product_id'=> $product->id],
             );
+
+            DB::table('product_publication')->truncate();
             DB::table('product_publication')->insert(
                 ['publication_id' => 1, 'product_id'=> $product->id],
                 ['publication_id' => 2, 'product_id'=> $product->id],
             );
+
+            DB::table('product_publication')->truncate();
             DB::table('product_publication')->insert(
                 ['publication_id' => rand(1,6), 'product_id'=> $product->id],
                 ['publication_id' => rand(3,18), 'product_id'=> $product->id],
                 ['publication_id' => rand(4,15), 'product_id'=> $product->id],
-                ['publication_id' => rand(15,18), 'product_id'=> $product->id],
+                ['publication_id' => rand(15,18), 'product_id'=> $product->id], 
             );
         }
     }

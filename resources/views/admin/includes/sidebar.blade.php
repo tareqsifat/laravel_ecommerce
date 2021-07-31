@@ -58,6 +58,9 @@
                 <a href="{{ route('unit.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i>unit</a>
             </li>
             <li>
+                <a href="{{ route('vendor.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i>Vendor</a>
+            </li>
+            <li>
                 <a href="{{ route('publication.index') }}"><i class="zmdi zmdi-dot-circle-alt"></i>Publication</a>
             </li>
             <li>

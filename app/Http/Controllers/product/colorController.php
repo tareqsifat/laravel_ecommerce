@@ -50,7 +50,10 @@ class colorController extends Controller
         $color->creator = Auth::user()->id;
         $color->save();
 
-        return 'success';
+        return response()->json([
+            'html' => "<option value='".$color->id."'>".$color->name."</option>",
+            'value' => $color->id,
+        ]);
     }
 
     /**

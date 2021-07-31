@@ -133,4 +133,14 @@ class CategoryController extends Controller
         }
         return $option;  
     }
+
+    public function get_category_json()
+    {
+        $collection = Category::where('status',1)->latest()->get();
+        $option = '';
+        foreach ($collection as $key => $value) {
+            $option .= "<option ".($key== 0?' selected':'')." value ='".$value->id."'>".$value->name."</option>";
+        } 
+        return $option;
+    }
 }

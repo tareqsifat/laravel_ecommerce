@@ -130,9 +130,12 @@ Route::group( [
     Route::resource('product', 'ProductController');
     Route::resource('publication', 'PublicationController');
     Route::resource('writer', 'WriterController');
+    Route::resource('vendor', 'vendorController');
     
     Route::get('/get-all-category-selected-by-main-category/{main_category_id}','CategoryController@get_all_category_by_main_category')
     ->name('get_all_category_selected_by_main_category');
+    Route::get('/get-all-main-category-json','MainCategoryController@get_main_category_json')->name('get_main_category_json');
+    Route::get('/get-all-category-json','CategoryController@get_category_json')->name('get_category_json');
 
 
 });

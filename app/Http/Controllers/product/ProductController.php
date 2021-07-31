@@ -11,6 +11,7 @@ use App\Models\Publication;
 use App\Models\size;
 use App\Models\SubCategory;
 use App\Models\unit;
+use App\Models\vendor;
 use App\Models\Writer;
 use Illuminate\Http\Request;
 
@@ -39,6 +40,7 @@ class ProductController extends Controller
         $units = unit::where('status',1)->get();
         $writers = Writer::where('status',1)->get();
         $publications = Publication::where('status',1)->get();
+        $vendors = vendor::get();
 
         $maincategories = MainCategory::where('status',1)->get();
         $categories = Category::where('status',1)
@@ -48,7 +50,7 @@ class ProductController extends Controller
                             ->where('category_id', Category::where('status',1)
                             ->where('main_category_id', MainCategory::where('status',1)->latest()->first()->id)
                             ->latest()->first()->id)->latest()->get();
-        return view('admin.Product.create', compact('brands','colors','sizes','units','writers',
+        return view('admin.Product.create', compact('brands','colors','sizes','units','writers','vendors',
                                                     'publications','maincategories','categories','sub_categories'));
     }
 
@@ -61,11 +63,11 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'name' => ['required'],
+            'product_name' => ['required'],
             'brands' => ['required'],
-            'main_category_id' => ['required'],
-            'Category_id' => ['required'],
-            'Sub_category_id' => ['required'],
+            'porduct_main_category_id' => ['required'],
+            'porduct_Category_id' => ['required'],
+            'porduct_Sub_category_id' => ['required'],
             'color_id' => ['required'],
             'size_id' => ['required'],
             'unit_id' => ['required'],
