@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\WebsiteController;
+use GuzzleHttp\Middleware;
 use Illuminate\Routing\RouteRegistrar;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -52,17 +53,17 @@ Route::group( [
 
 ],
 
-function(){ 
+    function(){ 
 
-    Route::get('/index','UserController@index')->name('admin_user_index');
-    Route::get('/view/{id}','UserController@view')->name('admin_user_view');
-    Route::get('/create','UserController@create')->name('admin_user_create');
-    Route::post('/store','UserController@store')->name('admin_user_store');
-    Route::get('/edit/{id}','UserController@edit')->name('admin_user_edit');
-    Route::post('/update','UserController@update')->name('admin_user_update');
-    Route::post('/delete','UserController@delete')->name('admin_user_delete');
-    Route::get('/test/{id}','UserController@test')->name('admin_user_test');
-    
+        Route::get('/index','UserController@index')->name('admin_user_index');
+        Route::get('/view/{id}','UserController@view')->name('admin_user_view');
+        Route::get('/create','UserController@create')->name('admin_user_create');
+        Route::post('/store','UserController@store')->name('admin_user_store');
+        Route::get('/edit/{id}','UserController@edit')->name('admin_user_edit');
+        Route::post('/update','UserController@update')->name('admin_user_update');
+        Route::post('/delete','UserController@delete')->name('admin_user_delete');
+        Route::get('/test/{id}','UserController@test')->name('admin_user_test');
+        
 });
  
 // User_role management
@@ -87,9 +88,10 @@ function(){
  
 
 
-Route::group( ['prefix'=>'admin',
-'middleware'=>['auth'],
- 'namespace' => 'Admin' 
+Route::group( [
+    'prefix'=>'admin',
+    'middleware'=>['auth'],
+    'namespace' => 'Admin' 
 
 ], function(){
 
@@ -103,21 +105,13 @@ Route::group( ['prefix'=>'admin',
 });
 
 
-Route::group( [
+Route::group([
     'prefix'=>'admin/product',
     'middleware'=>['auth'],
     'namespace' => 'Product' 
 
 ], function(){ 
 
-    // basic page  
-    // Route::get('/index','ProductController@index')->name('admin_product_index');
-    // Route::get('/create','ProductController@create')->name('admin_product_create');
-    // Route::get('/store','ProductController@store')->name('admin_product_store');
-    // Route::get('/show','ProductController@show')->name('admin_product_view');
-    // Route::get('/edit','ProductController@show')->name('admin_product_edit');
-    // Route::get('/update','ProductController@update')->name('admin_product_update');
-    // Route::get('/destroy','ProductController@destroy')->name('admin_product_destroy');
 
     Route::resource('brand', 'BrandController');
     Route::resource('main_category', 'MainCategoryController');
@@ -136,6 +130,14 @@ Route::group( [
     ->name('get_all_category_selected_by_main_category');
     Route::get('/get-all-main-category-json','MainCategoryController@get_main_category_json')->name('get_main_category_json');
     Route::get('/get-all-category-json','CategoryController@get_category_json')->name('get_category_json');
-
-
 });
+
+Route::group([
+        'prefix' => 'file-manager',
+        'Middleware' => ['auth'],
+        'namespace' => 'Admin'
+    ],function(){
+        Route::post('/store-file', 'FileManagerController@store_file')->name('admin_fm_store_file');
+        Route::get('/get-files','FileManagerController@get_files')->name('admin_fm_get_files');
+        Route::delete('/delete-file/{image}','FileManagerController@delete_file')->name('admin_fm_delete_file');
+    });

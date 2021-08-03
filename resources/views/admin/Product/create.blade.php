@@ -250,20 +250,22 @@
                                     <label for="input-21" class=" col-form-label">Thumb Image</label>
                                     @include('admin.Product.components.input',[
                                             'name' => 'thumb_image',
-                                            'type' => 'file'
+                                            'type' => 'file',
+                                            'attr' => ''
                                         ])
                                 </div>
 
                                 <div class="form-group col-md-6 col-xl-6">
                                     <label for="input-21" class=" col-form-label">Related Image</label>
-                                    <div class="">
-                                        <input type="file" multiple name="related_images[]" class="form-control" id="input-21" placeholder="Alert" />
-                                        <span class="text-danger related_images"></span>
-                                    </div>
+                                    @include('admin.Product.components.input',[
+                                            'name' => 'related_images',
+                                            'type' => 'file',
+                                            'attr' => 'multiple'
+                                        ])
                                 </div>
 
                                 <div class="form-group col-md-6  col-xl-4">
-                                    <label for="input-21" class="col-form-label">Staus</label>
+                                    <label for="input-21" class="col-form-label">Status</label>
                                     <div class="">
                                         <select name="status" id="" class="form-control">
                                             <option value="draft">Draft</option>

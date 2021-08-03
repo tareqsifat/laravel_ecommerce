@@ -3,7 +3,7 @@
     <div class="select_body d-flex justify-content-between align-items-center">
         <select name= {{ $name }} id="select{{ $name }}" class="form-control {{ $class }}" multiple>
             @foreach ($collection as $key=>$item)
-                <option {{ $key==0?'selected':'' }} value="{{ $item->id }}">{{ $item->name }}</option>
+                <option {{ $key==0 ? 'selected' : '' }} value="{{ $item->id }}">{{ $item->name }}</option>
             @endforeach
         </select>
         <button class="btn btn-info" data-toggle="modal" data-target="#{{ $name }}Modal"  type="button" title="Add new {{ $name }}">
@@ -50,7 +50,6 @@
                                     @if ($item->option_route)
                                         <button type="button" class="btn btn-info load_options" data-url="{{ $item->option_route }}"><i class="fa fa-recycle"></i></button>
                                     @endif
-                                    
                                 </div>
                             @endif
                             <span class="text-danger {{ $item->name }}" style="font-size: 15px;"></span>
