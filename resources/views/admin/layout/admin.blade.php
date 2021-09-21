@@ -238,7 +238,7 @@
 
 
 
-            @yield('content');
+            @yield('content')
 
 
 
@@ -246,17 +246,6 @@
              <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
              <!--End Back To Top Button-->
  
-             <!--Start footer-->
-             {{-- <footer class="footer">
-                 <div class="container">
-                     <div class="text-center">
-                         Copyright © 2021 Tareq sifat @ admin
-                     </div>
-                 </div>
-             </footer> --}}
-             <!--End footer-->
- 
-             <!--start color switcher-->
              <div class="right-sidebar">
                  <div class="switcher-icon">
                      <i class="zmdi zmdi-settings zmdi-hc-spin"></i>

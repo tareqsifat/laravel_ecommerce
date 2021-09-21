@@ -6,7 +6,7 @@
         </a>
         <ul class="">
             <li>
-                <a href="{{ route('website_index') }}"><i class="zmdi zmdi-dot-circle-alt"></i> eCommerce v1</a>
+                <a href="#"><i class="zmdi zmdi-dot-circle-alt"></i> eCommerce v1</a>
             </li>
         </ul>
     </li>

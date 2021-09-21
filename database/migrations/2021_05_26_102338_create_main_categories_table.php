@@ -17,6 +17,7 @@ class CreateMainCategoriesTable extends Migration
             $table->id();
             $table->string('name',100)->nullable();
             $table->string('icon',100)->nullable();
+            
             $table->string('creator',100)->nullable();
             $table->string('slug',100)->nullable();
             $table->string('status')->default(1);

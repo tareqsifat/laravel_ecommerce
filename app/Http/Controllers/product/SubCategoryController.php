@@ -103,7 +103,7 @@ class SubCategoryController extends Controller
             'category_id' => ['required']
         ]);
 
-        dd($sub_Category);
+        // dd($sub_Category);
         if ($request->hasFile('icon')){
             $sub_Category->icon = Storage::put('uploads\category', $request->hasFile('icon'));
             $sub_Category->save();

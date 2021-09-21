@@ -261,8 +261,7 @@ $(function () {
                 $('#fileManagerModal').modal('hide');
             }
         })
-        
-    }
+    } 
     
 
     

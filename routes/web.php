@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\WebsiteController;
-use GuzzleHttp\Middleware;
-use Illuminate\Routing\RouteRegistrar;
+use App\Http\Controllers\TestController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +25,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/website','webController@index')->name('website_index');
+Route::get('/','webController@index')->name('website_index');
 Route::get('/products','webController@products')->name('website_products');
 Route::get('/details','webController@details')->name('website_details');
 Route::get('/cart','webController@cart')->name('website_cart');
@@ -33,15 +34,25 @@ Route::get('/wishlist','webController@wishlist')->name('website_wishlist');
 Route::get('/contact','webController@contact')->name('website_contact');
 
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group( [
+    'prefix'=>'admin',
+    'middleware'=>['auth'],
+    'namespace'=>'Admin'
+],function(){
+
+    Route::get('/','AdminController@index')->name('admin_index');
 });
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // Route::post('/login','Auth\LoginController@login')->middleware('check_user_is_active');
 
 Route::get('/admin','Admin\AdminController@index')->name('admin_detail');
 
 Route::get('/admin','AdminController@index')->name('admin_index') ->middleware('auth');
+
 
 
 // User management
@@ -141,3 +152,6 @@ Route::group([
         Route::get('/get-files','FileManagerController@get_files')->name('admin_fm_get_files');
         Route::delete('/delete-file/{image}','FileManagerController@delete_file')->name('admin_fm_delete_file');
     });
+
+    Route::post('/testing','TestController@index')->name('test_route');  
+ 

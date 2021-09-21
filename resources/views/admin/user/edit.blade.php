@@ -16,7 +16,7 @@
                                                 
                                 <form method="POST" action="{{ route('admin_user_update') }}" enctype="multipart/form-data" autocomplete="off">
                                     @csrf
-                                    <input type="hidden" name="id" value="{{ $user -> id }}">
+                                    <input type="hidden" name="id" value="{{ $user ->id }}">
                                     <div class="form-group row">
                                         <label for="input-21" class="col-sm-2 col-form-label">First Name</label>
                                         <div class="col-sm-10">

@@ -50,7 +50,7 @@
                                             <select name="role_id" class="form-control" id="">
                                                 {{-- @foreach (App\Models\UserRole::get() as $item) --}}
                                                 @foreach ($user_roles as $item)
-                                                    <option value="{{ $item -> serial}}">{{ $item->name }}</option>
+                                                    <option value="{{ $item->serial}}">{{ $item->name }}</option>
                                                 @endforeach
                                             </select>
                                             @error('role_id')
